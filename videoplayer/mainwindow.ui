@@ -56,6 +56,12 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionPlay"/>
+   <addaction name="separator"/>
+   <addaction name="actionStop"/>
+   <addaction name="separator"/>
+   <addaction name="actionBeginning"/>
+   <addaction name="separator"/>
   </widget>
   <action name="actionOpen">
    <property name="text">
@@ -63,6 +69,30 @@
    </property>
    <property name="toolTip">
     <string>Open A File</string>
+   </property>
+  </action>
+  <action name="actionPlay">
+   <property name="text">
+    <string>Play</string>
+   </property>
+   <property name="toolTip">
+    <string>Play A Video</string>
+   </property>
+  </action>
+  <action name="actionStop">
+   <property name="text">
+    <string>Stop</string>
+   </property>
+   <property name="toolTip">
+    <string>Stop A Video</string>
+   </property>
+  </action>
+  <action name="actionBeginning">
+   <property name="text">
+    <string>Beginning</string>
+   </property>
+   <property name="toolTip">
+    <string>Start Watching A Video From The Beginning</string>
    </property>
   </action>
  </widget>

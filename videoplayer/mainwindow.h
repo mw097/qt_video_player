@@ -21,6 +21,12 @@ public:
 private slots:
     void on_actionOpen_triggered();
 
+    void on_actionPlay_triggered();
+
+    void on_actionStop_triggered();
+
+    void on_actionBeginning_triggered();
+
 private:
     Ui::MainWindow *ui;
     /*Handles decompresing and decoding a file*/

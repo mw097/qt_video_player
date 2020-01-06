@@ -26,6 +26,9 @@ class Ui_MainWindow
 {
 public:
     QAction *actionOpen;
+    QAction *actionPlay;
+    QAction *actionStop;
+    QAction *actionBeginning;
     QWidget *centralwidget;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -40,6 +43,12 @@ public:
         MainWindow->setStyleSheet(QStringLiteral("background: #333;"));
         actionOpen = new QAction(MainWindow);
         actionOpen->setObjectName(QStringLiteral("actionOpen"));
+        actionPlay = new QAction(MainWindow);
+        actionPlay->setObjectName(QStringLiteral("actionPlay"));
+        actionStop = new QAction(MainWindow);
+        actionStop->setObjectName(QStringLiteral("actionStop"));
+        actionBeginning = new QAction(MainWindow);
+        actionBeginning->setObjectName(QStringLiteral("actionBeginning"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         MainWindow->setCentralWidget(centralwidget);
@@ -60,6 +69,12 @@ public:
         MainWindow->addToolBar(Qt::BottomToolBarArea, toolBar_down);
 
         toolBar_up->addAction(actionOpen);
+        toolBar_down->addAction(actionPlay);
+        toolBar_down->addSeparator();
+        toolBar_down->addAction(actionStop);
+        toolBar_down->addSeparator();
+        toolBar_down->addAction(actionBeginning);
+        toolBar_down->addSeparator();
 
         retranslateUi(MainWindow);
 
@@ -72,6 +87,18 @@ public:
         actionOpen->setText(QApplication::translate("MainWindow", "Open", Q_NULLPTR));
 #ifndef QT_NO_TOOLTIP
         actionOpen->setToolTip(QApplication::translate("MainWindow", "Open A File", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
+        actionPlay->setText(QApplication::translate("MainWindow", "Play", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        actionPlay->setToolTip(QApplication::translate("MainWindow", "Play A Video", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
+        actionStop->setText(QApplication::translate("MainWindow", "Stop", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        actionStop->setToolTip(QApplication::translate("MainWindow", "Stop A Video", Q_NULLPTR));
+#endif // QT_NO_TOOLTIP
+        actionBeginning->setText(QApplication::translate("MainWindow", "Beginning", Q_NULLPTR));
+#ifndef QT_NO_TOOLTIP
+        actionBeginning->setToolTip(QApplication::translate("MainWindow", "Start Watching A Video From The Beginning", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
         toolBar_up->setWindowTitle(QApplication::translate("MainWindow", "toolBar", Q_NULLPTR));
         toolBar_down->setWindowTitle(QApplication::translate("MainWindow", "toolBar_2", Q_NULLPTR));
