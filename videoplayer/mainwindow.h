@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QVideoWidget>
+#include <QMediaPlayer>
+#include <QFileDialog>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -15,7 +18,14 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_actionOpen_triggered();
+
 private:
     Ui::MainWindow *ui;
+    /*Handles decompresing and decoding a file*/
+    QMediaPlayer* player;
+    /*Medium through which the video will be displayed upon*/
+    QVideoWidget* canvas;
 };
 #endif // MAINWINDOW_H
