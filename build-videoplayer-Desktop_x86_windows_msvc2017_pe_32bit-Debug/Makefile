@@ -230,6 +230,7 @@ Makefile: ..\videoplayer\videoplayer.pro D:\Dev\5.9.9\msvc2015\mkspecs\win32-msv
 		D:\Dev\5.9.9\msvc2015\mkspecs\features\qt_config.prf \
 		D:\Dev\5.9.9\msvc2015\mkspecs\win32-msvc\qmake.conf \
 		D:\Dev\5.9.9\msvc2015\mkspecs\features\spec_post.prf \
+		.qmake.stash \
 		D:\Dev\5.9.9\msvc2015\mkspecs\features\exclusive_builds.prf \
 		D:\Dev\5.9.9\msvc2015\mkspecs\common\msvc-version.conf \
 		D:\Dev\5.9.9\msvc2015\mkspecs\features\toolchain.prf \
@@ -417,6 +418,7 @@ D:\Dev\5.9.9\msvc2015\mkspecs\features\qt_functions.prf:
 D:\Dev\5.9.9\msvc2015\mkspecs\features\qt_config.prf:
 D:\Dev\5.9.9\msvc2015\mkspecs\win32-msvc\qmake.conf:
 D:\Dev\5.9.9\msvc2015\mkspecs\features\spec_post.prf:
+.qmake.stash:
 D:\Dev\5.9.9\msvc2015\mkspecs\features\exclusive_builds.prf:
 D:\Dev\5.9.9\msvc2015\mkspecs\common\msvc-version.conf:
 D:\Dev\5.9.9\msvc2015\mkspecs\features\toolchain.prf:

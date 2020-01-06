@@ -18,6 +18,16 @@ MainWindow::MainWindow(QWidget *parent)
     ui->actionPlay->setIcon(QIcon(":/img/icons/play.png"));
     ui->actionStop->setIcon(QIcon(":/img/icons/stop.png"));
     ui->actionBeginning->setIcon(QIcon(":/img/icons/beginning.png"));
+
+    // Setting Time Slider
+    time_slider = new QSlider(this);
+    time_slider->setOrientation(Qt::Horizontal); //Making slider horizontal
+    ui->toolBar_down->addWidget(time_slider); //Adding slider to toolbar
+
+    // Connecting TimeSlider With the Player
+    connect(player, &QMediaPlayer::durationChanged, time_slider, &QSlider::setMaximum);
+    connect(player, &QMediaPlayer::positionChanged, time_slider, &QSlider::setValue);
+    connect(time_slider, &QSlider::sliderMoved, player, &QMediaPlayer::setPosition);
 }
 
 MainWindow::~MainWindow()
@@ -30,7 +40,6 @@ void MainWindow::on_actionOpen_triggered()
     QString filename = QFileDialog::getOpenFileName(this, "Open a file","","Video Files (*.avi *.mpg *.mp4)");
     on_actionStop_triggered();
     player->setMedia(QUrl::fromLocalFile(filename));
-
 }
 
 void MainWindow::on_actionPlay_triggered()

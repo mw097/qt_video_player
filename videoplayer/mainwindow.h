@@ -5,6 +5,8 @@
 #include <QVideoWidget>
 #include <QMediaPlayer>
 #include <QFileDialog>
+#include <QSlider>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -33,5 +35,6 @@ private:
     QMediaPlayer* player;
     /*Medium through which the video will be displayed upon*/
     QVideoWidget* canvas;
+    QSlider* time_slider;
 };
 #endif // MAINWINDOW_H
