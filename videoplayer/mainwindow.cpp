@@ -28,6 +28,14 @@ MainWindow::MainWindow(QWidget *parent)
     connect(player, &QMediaPlayer::durationChanged, time_slider, &QSlider::setMaximum);
     connect(player, &QMediaPlayer::positionChanged, time_slider, &QSlider::setValue);
     connect(time_slider, &QSlider::sliderMoved, player, &QMediaPlayer::setPosition);
+
+    // Setting Volume Slider
+    volume_slider = new QSlider(this);
+    volume_slider->setOrientation(Qt::Horizontal); //Making slider horizontal
+    ui->toolBar_down->addWidget(volume_slider); //Adding slider to toolbar
+
+    // Connecting VolumeSlider With the Player
+    connect(volume_slider,&QSlider::sliderMoved, player, &QMediaPlayer::setVolume);
 }
 
 MainWindow::~MainWindow()

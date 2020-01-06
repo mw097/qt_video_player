@@ -36,5 +36,7 @@ private:
     /*Medium through which the video will be displayed upon*/
     QVideoWidget* canvas;
     QSlider* time_slider;
+    QSlider* volume_slider;
+
 };
 #endif // MAINWINDOW_H
