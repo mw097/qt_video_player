@@ -19,6 +19,13 @@ MainWindow::MainWindow(QWidget *parent)
     ui->actionStop->setIcon(QIcon(":/img/icons/stop.png"));
     ui->actionBeginning->setIcon(QIcon(":/img/icons/beginning.png"));
 
+    //Space Between Buttons And Time Slider
+    space1 = new QLabel(this);
+    QString img1 = ":/img/icons/space.png";
+    QImage image1(img1);
+    space1->setPixmap(QPixmap::fromImage(image1));
+    ui->toolBar_down->addWidget(space1); //Adding space between Sliders
+
     // Setting Time Slider
     time_slider = new QSlider(this);
     time_slider->setOrientation(Qt::Horizontal); //Making slider horizontal
@@ -29,6 +36,13 @@ MainWindow::MainWindow(QWidget *parent)
     connect(player, &QMediaPlayer::positionChanged, time_slider, &QSlider::setValue);
     connect(time_slider, &QSlider::sliderMoved, player, &QMediaPlayer::setPosition);
 
+    //Space Between Sliders
+    space2 = new QLabel(this);
+    QString img2 = ":/img/icons/sound.png";
+    QImage image2(img2);
+    space2->setPixmap(QPixmap::fromImage(image2));
+    ui->toolBar_down->addWidget(space2); //Adding space between Sliders
+
     // Setting Volume Slider
     volume_slider = new QSlider(this);
     volume_slider->setOrientation(Qt::Horizontal); //Making slider horizontal
@@ -36,6 +50,13 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Connecting VolumeSlider With the Player
     connect(volume_slider,&QSlider::sliderMoved, player, &QMediaPlayer::setVolume);
+
+    //Space Between Slider And End Of The Window
+    space3 = new QLabel(this);
+    QString img3 = ":/img/icons/space.png";
+    QImage image3(img3);
+    space3->setPixmap(QPixmap::fromImage(image3));
+    ui->toolBar_down->addWidget(space3); //Adding space between Sliders
 }
 
 MainWindow::~MainWindow()

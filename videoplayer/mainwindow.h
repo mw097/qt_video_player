@@ -6,7 +6,7 @@
 #include <QMediaPlayer>
 #include <QFileDialog>
 #include <QSlider>
-
+#include <QLabel>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -37,6 +37,9 @@ private:
     QVideoWidget* canvas;
     QSlider* time_slider;
     QSlider* volume_slider;
+    QLabel* space1;
+    QLabel* space2;
+    QLabel* space3;
 
 };
 #endif // MAINWINDOW_H
