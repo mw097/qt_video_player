@@ -12,6 +12,12 @@ MainWindow::MainWindow(QWidget *parent)
     canvas = new QVideoWidget(this);
     player->setVideoOutput(canvas);
     this->setCentralWidget(canvas);
+
+    // Setting Actions Icons
+    ui->actionOpen->setIcon(QIcon(":/img/icons/open.png"));
+    ui->actionPlay->setIcon(QIcon(":/img/icons/play.png"));
+    ui->actionStop->setIcon(QIcon(":/img/icons/stop.png"));
+    ui->actionBeginning->setIcon(QIcon(":/img/icons/beginning.png"));
 }
 
 MainWindow::~MainWindow()
