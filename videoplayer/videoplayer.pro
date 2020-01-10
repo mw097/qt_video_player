@@ -1,4 +1,4 @@
-QT       += core gui multimedia multimediawidgets # Declaring Qt Libraries ( multimedia multimediawidgets )
+QT       += core gui multimedia multimediawidgets sql# Declaring Qt Libraries ( multimedia multimediawidgets )
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 

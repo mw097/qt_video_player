@@ -271,6 +271,7 @@ Makefile: ..\videoplayer\videoplayer.pro ..\..\..\Qt\5.12.6\msvc2017\mkspecs\win
 		..\..\..\Qt\5.12.6\msvc2017\lib\Qt5Widgets.prl \
 		..\..\..\Qt\5.12.6\msvc2017\lib\Qt5Gui.prl \
 		..\..\..\Qt\5.12.6\msvc2017\lib\Qt5Network.prl \
+		..\..\..\Qt\5.12.6\msvc2017\lib\Qt5Sql.prl \
 		..\..\..\Qt\5.12.6\msvc2017\lib\Qt5Core.prl \
 		..\..\..\Qt\5.12.6\msvc2017\lib\qtmain.prl
 	$(QMAKE) -o Makefile ..\videoplayer\videoplayer.pro -spec win32-msvc "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -468,6 +469,7 @@ Makefile: ..\videoplayer\videoplayer.pro ..\..\..\Qt\5.12.6\msvc2017\mkspecs\win
 ..\..\..\Qt\5.12.6\msvc2017\lib\Qt5Widgets.prl:
 ..\..\..\Qt\5.12.6\msvc2017\lib\Qt5Gui.prl:
 ..\..\..\Qt\5.12.6\msvc2017\lib\Qt5Network.prl:
+..\..\..\Qt\5.12.6\msvc2017\lib\Qt5Sql.prl:
 ..\..\..\Qt\5.12.6\msvc2017\lib\Qt5Core.prl:
 ..\..\..\Qt\5.12.6\msvc2017\lib\qtmain.prl:
 qmake: FORCE
