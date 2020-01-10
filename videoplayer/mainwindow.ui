@@ -23,7 +23,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>26</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
@@ -49,6 +49,8 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionOpen"/>
+   <addaction name="separator"/>
+   <addaction name="actionAdd_Bookmark"/>
   </widget>
   <widget class="QToolBar" name="toolBar_down">
    <property name="windowTitle">
@@ -117,6 +119,11 @@
    </property>
    <property name="toolTip">
     <string>Start Watching A Video From The Beginning</string>
+   </property>
+  </action>
+  <action name="actionAdd_Bookmark">
+   <property name="text">
+    <string>Add Bookmark</string>
    </property>
   </action>
  </widget>
