@@ -346,6 +346,11 @@ release\moc_mainwindow.cpp: ..\videoplayer\mainwindow.h \
 		..\..\..\Qt\5.12.6\msvc2017\include\QtGui\qtextformat.h \
 		..\..\..\Qt\5.12.6\msvc2017\include\QtGui\qpen.h \
 		..\..\..\Qt\5.12.6\msvc2017\include\QtGui\qtextoption.h \
+		..\..\..\Qt\5.12.6\msvc2017\include\QtWidgets\QLineEdit \
+		..\..\..\Qt\5.12.6\msvc2017\include\QtWidgets\QPushButton \
+		..\..\..\Qt\5.12.6\msvc2017\include\QtWidgets\qpushbutton.h \
+		..\..\..\Qt\5.12.6\msvc2017\include\QtWidgets\qabstractbutton.h \
+		..\..\..\Qt\5.12.6\msvc2017\include\QtCore\QDebug \
 		release\moc_predefs.h \
 		..\..\..\Qt\5.12.6\msvc2017\bin\moc.exe
 	E:\Qt\5.12.6\msvc2017\bin\moc.exe $(DEFINES) --compiler-flavor=msvc --include E:/projectOOP/oop_2019_odtwarzacz_wideo/build-videoplayer-Desktop_Qt_5_12_6_MSVC2017_32bit-Debug/release/moc_predefs.h -IE:/Qt/5.12.6/msvc2017/mkspecs/win32-msvc -IE:/projectOOP/oop_2019_odtwarzacz_wideo/videoplayer -IE:/Qt/5.12.6/msvc2017/include -IE:/Qt/5.12.6/msvc2017/include/QtMultimediaWidgets -IE:/Qt/5.12.6/msvc2017/include/QtMultimedia -IE:/Qt/5.12.6/msvc2017/include/QtWidgets -IE:/Qt/5.12.6/msvc2017/include/QtGui -IE:/Qt/5.12.6/msvc2017/include/QtANGLE -IE:/Qt/5.12.6/msvc2017/include/QtNetwork -IE:/Qt/5.12.6/msvc2017/include/QtCore -I. -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.16.27023\ATLMFC\include" -I"C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\VC\Tools\MSVC\14.16.27023\include" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\ucrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\shared" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\um" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\winrt" -I"C:\Program Files (x86)\Windows Kits\10\include\10.0.17763.0\cppwinrt" ..\videoplayer\mainwindow.h -o release\moc_mainwindow.cpp
@@ -532,6 +537,11 @@ release\main.obj: ..\videoplayer\main.cpp ..\videoplayer\mainwindow.h \
 		..\..\..\Qt\5.12.6\msvc2017\include\QtGui\qtextformat.h \
 		..\..\..\Qt\5.12.6\msvc2017\include\QtGui\qpen.h \
 		..\..\..\Qt\5.12.6\msvc2017\include\QtGui\qtextoption.h \
+		..\..\..\Qt\5.12.6\msvc2017\include\QtWidgets\QLineEdit \
+		..\..\..\Qt\5.12.6\msvc2017\include\QtWidgets\QPushButton \
+		..\..\..\Qt\5.12.6\msvc2017\include\QtWidgets\qpushbutton.h \
+		..\..\..\Qt\5.12.6\msvc2017\include\QtWidgets\qabstractbutton.h \
+		..\..\..\Qt\5.12.6\msvc2017\include\QtCore\QDebug \
 		..\..\..\Qt\5.12.6\msvc2017\include\QtWidgets\QApplication \
 		..\..\..\Qt\5.12.6\msvc2017\include\QtWidgets\qapplication.h \
 		..\..\..\Qt\5.12.6\msvc2017\include\QtCore\qcoreapplication.h \
@@ -699,6 +709,11 @@ release\mainwindow.obj: ..\videoplayer\mainwindow.cpp ..\videoplayer\mainwindow.
 		..\..\..\Qt\5.12.6\msvc2017\include\QtGui\qtextformat.h \
 		..\..\..\Qt\5.12.6\msvc2017\include\QtGui\qpen.h \
 		..\..\..\Qt\5.12.6\msvc2017\include\QtGui\qtextoption.h \
+		..\..\..\Qt\5.12.6\msvc2017\include\QtWidgets\QLineEdit \
+		..\..\..\Qt\5.12.6\msvc2017\include\QtWidgets\QPushButton \
+		..\..\..\Qt\5.12.6\msvc2017\include\QtWidgets\qpushbutton.h \
+		..\..\..\Qt\5.12.6\msvc2017\include\QtWidgets\qabstractbutton.h \
+		..\..\..\Qt\5.12.6\msvc2017\include\QtCore\QDebug \
 		ui_mainwindow.h \
 		..\..\..\Qt\5.12.6\msvc2017\include\QtWidgets\QAction \
 		..\..\..\Qt\5.12.6\msvc2017\include\QtWidgets\qaction.h \

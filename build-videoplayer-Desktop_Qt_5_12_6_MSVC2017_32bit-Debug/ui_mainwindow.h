@@ -33,6 +33,7 @@ public:
     QStatusBar *statusbar;
     QToolBar *toolBar_up;
     QToolBar *toolBar_down;
+    QToolBar *commentBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -59,15 +60,23 @@ public:
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
+        statusbar->setSizeGripEnabled(false);
         MainWindow->setStatusBar(statusbar);
         toolBar_up = new QToolBar(MainWindow);
         toolBar_up->setObjectName(QString::fromUtf8("toolBar_up"));
         toolBar_up->setStyleSheet(QString::fromUtf8("background: #fff;"));
+        toolBar_up->setMovable(false);
         MainWindow->addToolBar(Qt::TopToolBarArea, toolBar_up);
         toolBar_down = new QToolBar(MainWindow);
         toolBar_down->setObjectName(QString::fromUtf8("toolBar_down"));
         toolBar_down->setStyleSheet(QString::fromUtf8("background: #fff;"));
+        toolBar_down->setMovable(false);
         MainWindow->addToolBar(Qt::BottomToolBarArea, toolBar_down);
+        commentBar = new QToolBar(MainWindow);
+        commentBar->setObjectName(QString::fromUtf8("commentBar"));
+        commentBar->setMovable(false);
+        MainWindow->addToolBar(Qt::BottomToolBarArea, commentBar);
+        MainWindow->insertToolBarBreak(commentBar);
 
         toolBar_up->addAction(actionOpen);
         toolBar_up->addSeparator();
@@ -106,6 +115,7 @@ public:
         actionAdd_Bookmark->setText(QApplication::translate("MainWindow", "Add Bookmark", nullptr));
         toolBar_up->setWindowTitle(QApplication::translate("MainWindow", "toolBar", nullptr));
         toolBar_down->setWindowTitle(QApplication::translate("MainWindow", "toolBar_2", nullptr));
+        commentBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", nullptr));
     } // retranslateUi
 
 };

@@ -59,7 +59,6 @@ MainWindow::MainWindow(QWidget *parent)
     space3->setPixmap(QPixmap::fromImage(image3));
     ui->toolBar_down->addWidget(space3); //Adding space between Sliders
 
-<<<<<<< HEAD
     //Add ComboBox bookmarks
     bookmarks = new QComboBox(this);
     bookmarks->addItem("Choose bookmark...");
@@ -67,7 +66,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     //Add bookmarks button
     bookmarkDialog = new QInputDialog(this);
-=======
+
     //Status Bar For Comments and Actions
     browser = new QLabel(this);
     ui->statusbar->addWidget(browser); //Adding space between Sliders
@@ -85,9 +84,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->commentBar->addWidget(comment_btn);
     comment_btn->setText("+");
     comment_btn->setStyleSheet(" QPushButton{ background:#fff; color: #000; border-radius:5px; border: 1px solid #999; height: 19px; width: 80px; margin: 0 5px; } ");
-
-
->>>>>>> 6c60d19f39e7f5d98cfc6a57a2ed8e3dcddcb764
 
 }
 
