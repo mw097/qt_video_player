@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.9
+** Created by: Qt User Interface Compiler version 5.12.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -12,8 +12,6 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QStatusBar>
@@ -39,40 +37,40 @@ public:
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
-            MainWindow->setObjectName(QStringLiteral("MainWindow"));
+            MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(800, 600);
-        MainWindow->setStyleSheet(QStringLiteral("background: #333;"));
+        MainWindow->setStyleSheet(QString::fromUtf8("background: #333;"));
         actionOpen = new QAction(MainWindow);
-        actionOpen->setObjectName(QStringLiteral("actionOpen"));
+        actionOpen->setObjectName(QString::fromUtf8("actionOpen"));
         actionPlay = new QAction(MainWindow);
-        actionPlay->setObjectName(QStringLiteral("actionPlay"));
+        actionPlay->setObjectName(QString::fromUtf8("actionPlay"));
         actionStop = new QAction(MainWindow);
-        actionStop->setObjectName(QStringLiteral("actionStop"));
+        actionStop->setObjectName(QString::fromUtf8("actionStop"));
         actionBeginning = new QAction(MainWindow);
-        actionBeginning->setObjectName(QStringLiteral("actionBeginning"));
+        actionBeginning->setObjectName(QString::fromUtf8("actionBeginning"));
         centralwidget = new QWidget(MainWindow);
-        centralwidget->setObjectName(QStringLiteral("centralwidget"));
+        centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
-        menubar->setObjectName(QStringLiteral("menubar"));
+        menubar->setObjectName(QString::fromUtf8("menubar"));
         menubar->setGeometry(QRect(0, 0, 800, 26));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
-        statusbar->setObjectName(QStringLiteral("statusbar"));
+        statusbar->setObjectName(QString::fromUtf8("statusbar"));
         statusbar->setSizeGripEnabled(false);
         MainWindow->setStatusBar(statusbar);
         toolBar_up = new QToolBar(MainWindow);
-        toolBar_up->setObjectName(QStringLiteral("toolBar_up"));
-        toolBar_up->setStyleSheet(QStringLiteral("background: #fff;"));
+        toolBar_up->setObjectName(QString::fromUtf8("toolBar_up"));
+        toolBar_up->setStyleSheet(QString::fromUtf8("background: #fff;"));
         toolBar_up->setMovable(false);
         MainWindow->addToolBar(Qt::TopToolBarArea, toolBar_up);
         toolBar_down = new QToolBar(MainWindow);
-        toolBar_down->setObjectName(QStringLiteral("toolBar_down"));
-        toolBar_down->setStyleSheet(QStringLiteral("background: #fff;"));
+        toolBar_down->setObjectName(QString::fromUtf8("toolBar_down"));
+        toolBar_down->setStyleSheet(QString::fromUtf8("background: #fff;"));
         toolBar_down->setMovable(false);
         MainWindow->addToolBar(Qt::BottomToolBarArea, toolBar_down);
         commentBar = new QToolBar(MainWindow);
-        commentBar->setObjectName(QStringLiteral("commentBar"));
+        commentBar->setObjectName(QString::fromUtf8("commentBar"));
         commentBar->setMovable(false);
         MainWindow->addToolBar(Qt::BottomToolBarArea, commentBar);
         MainWindow->insertToolBarBreak(commentBar);
@@ -92,26 +90,26 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
-        actionOpen->setText(QApplication::translate("MainWindow", "Open", Q_NULLPTR));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", nullptr));
+        actionOpen->setText(QApplication::translate("MainWindow", "Open", nullptr));
 #ifndef QT_NO_TOOLTIP
-        actionOpen->setToolTip(QApplication::translate("MainWindow", "Open A File", Q_NULLPTR));
+        actionOpen->setToolTip(QApplication::translate("MainWindow", "Open A File", nullptr));
 #endif // QT_NO_TOOLTIP
-        actionPlay->setText(QApplication::translate("MainWindow", "Play", Q_NULLPTR));
+        actionPlay->setText(QApplication::translate("MainWindow", "Play", nullptr));
 #ifndef QT_NO_TOOLTIP
-        actionPlay->setToolTip(QApplication::translate("MainWindow", "Play A Video", Q_NULLPTR));
+        actionPlay->setToolTip(QApplication::translate("MainWindow", "Play A Video", nullptr));
 #endif // QT_NO_TOOLTIP
-        actionStop->setText(QApplication::translate("MainWindow", "Stop", Q_NULLPTR));
+        actionStop->setText(QApplication::translate("MainWindow", "Stop", nullptr));
 #ifndef QT_NO_TOOLTIP
-        actionStop->setToolTip(QApplication::translate("MainWindow", "Stop A Video", Q_NULLPTR));
+        actionStop->setToolTip(QApplication::translate("MainWindow", "Stop A Video", nullptr));
 #endif // QT_NO_TOOLTIP
-        actionBeginning->setText(QApplication::translate("MainWindow", "Beginning", Q_NULLPTR));
+        actionBeginning->setText(QApplication::translate("MainWindow", "Beginning", nullptr));
 #ifndef QT_NO_TOOLTIP
-        actionBeginning->setToolTip(QApplication::translate("MainWindow", "Start Watching A Video From The Beginning", Q_NULLPTR));
+        actionBeginning->setToolTip(QApplication::translate("MainWindow", "Start Watching A Video From The Beginning", nullptr));
 #endif // QT_NO_TOOLTIP
-        toolBar_up->setWindowTitle(QApplication::translate("MainWindow", "toolBar", Q_NULLPTR));
-        toolBar_down->setWindowTitle(QApplication::translate("MainWindow", "toolBar_2", Q_NULLPTR));
-        commentBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", Q_NULLPTR));
+        toolBar_up->setWindowTitle(QApplication::translate("MainWindow", "toolBar", nullptr));
+        toolBar_down->setWindowTitle(QApplication::translate("MainWindow", "toolBar_2", nullptr));
+        commentBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", nullptr));
     } // retranslateUi
 
 };

@@ -47,6 +47,7 @@ MainWindow::MainWindow(QWidget *parent)
     volume_slider = new QSlider(this);
     volume_slider->setOrientation(Qt::Horizontal); //Making slider horizontal
     ui->toolBar_down->addWidget(volume_slider); //Adding slider to toolbar
+    volume_slider->setValue(50); //Set default value
 
     // Connecting VolumeSlider With the Player
     connect(volume_slider,&QSlider::sliderMoved, player, &QMediaPlayer::setVolume);
@@ -58,6 +59,7 @@ MainWindow::MainWindow(QWidget *parent)
     space3->setPixmap(QPixmap::fromImage(image3));
     ui->toolBar_down->addWidget(space3); //Adding space between Sliders
 
+<<<<<<< HEAD
     //Add ComboBox bookmarks
     bookmarks = new QComboBox(this);
     bookmarks->addItem("Choose bookmark...");
@@ -65,6 +67,27 @@ MainWindow::MainWindow(QWidget *parent)
 
     //Add bookmarks button
     bookmarkDialog = new QInputDialog(this);
+=======
+    //Status Bar For Comments and Actions
+    browser = new QLabel(this);
+    ui->statusbar->addWidget(browser); //Adding space between Sliders
+    browser->setStyleSheet(" QLabel{ color: #fff; } ");
+
+    //CommentBar
+    comment = new QLineEdit(this);
+    ui->commentBar->addWidget(comment);
+    ui->commentBar->setStyleSheet("QToolBar {background:#fff; height: 40px;}");
+    comment->setStyleSheet(" QLineEdit{ background:#fff; color: #000; border-radius:5px; border: 1px solid #999; height: 19px; width: 80px; margin 0 0 0 5px; } ");
+    comment->setPlaceholderText("Type comment here...");
+
+    comment_btn = new QPushButton;
+    connect(comment_btn, SIGNAL(clicked()), this , SLOT(on_comment_btn_triggered()));
+    ui->commentBar->addWidget(comment_btn);
+    comment_btn->setText("+");
+    comment_btn->setStyleSheet(" QPushButton{ background:#fff; color: #000; border-radius:5px; border: 1px solid #999; height: 19px; width: 80px; margin: 0 5px; } ");
+
+
+>>>>>>> 6c60d19f39e7f5d98cfc6a57a2ed8e3dcddcb764
 
 }
 
@@ -78,21 +101,33 @@ void MainWindow::on_actionOpen_triggered()
     QString filename = QFileDialog::getOpenFileName(this, "Open a file","","Video Files (*.avi *.mpg *.mp4)");
     on_actionStop_triggered();
     player->setMedia(QUrl::fromLocalFile(filename));
+    browser->setText("Open Button");
 }
 
 void MainWindow::on_actionPlay_triggered()
 {
     player->play();
+    browser->setText("Play Button");
 }
 
 void MainWindow::on_actionStop_triggered()
 {
     player->pause();
+    browser->setText("Pause Button");
 }
 
 void MainWindow::on_actionBeginning_triggered()
 {
     player->stop();
+    browser->setText("Stop Button");
+}
+
+void MainWindow::on_comment_btn_triggered()
+{
+    int commentTime = player->position();
+    QString commentText = comment->text();
+
+    qDebug() << "time: " << commentTime << "text: " << commentText;
 }
 
 void MainWindow::on_actionAdd_Bookmark_triggered()
