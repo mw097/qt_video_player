@@ -68,7 +68,7 @@ MainWindow::MainWindow(QWidget *parent)
     comment = new QLineEdit(this);
     ui->commentBar->addWidget(comment);
     ui->commentBar->setStyleSheet("QToolBar {background:#fff; height: 40px;}");
-    comment->setStyleSheet(" QLineEdit{ background:#fff; color: #000; } ");
+    comment->setStyleSheet(" QLineEdit{ background:#fff; color: #000; border-radius:5px; border: 1px solid #999; height: 19px; width: 80px; margin 0 0 0 5px; } ");
     comment->setPlaceholderText("Type comment here...");
 
     comment_btn = new QPushButton;
