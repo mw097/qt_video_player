@@ -75,7 +75,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(comment_btn, SIGNAL(clicked()), this , SLOT(on_comment_btn_triggered()));
     ui->commentBar->addWidget(comment_btn);
     comment_btn->setText("+");
-    comment_btn->setStyleSheet(" QLineEdit{ background:#fff; color: #000; } ");
+    comment_btn->setStyleSheet(" QPushButton{ background:#fff; color: #000; border-radius:5px; border: 1px solid #999; height: 19px; width: 80px; margin: 0 5px; } ");
 
 
 
