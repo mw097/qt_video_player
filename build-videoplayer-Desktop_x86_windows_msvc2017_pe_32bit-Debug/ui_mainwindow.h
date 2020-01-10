@@ -34,6 +34,7 @@ public:
     QStatusBar *statusbar;
     QToolBar *toolBar_up;
     QToolBar *toolBar_down;
+    QToolBar *commentBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -54,7 +55,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 26));
+        menubar->setGeometry(QRect(0, 0, 800, 29));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QStringLiteral("statusbar"));
@@ -67,6 +68,10 @@ public:
         toolBar_down->setObjectName(QStringLiteral("toolBar_down"));
         toolBar_down->setStyleSheet(QStringLiteral("background: #fff;"));
         MainWindow->addToolBar(Qt::BottomToolBarArea, toolBar_down);
+        commentBar = new QToolBar(MainWindow);
+        commentBar->setObjectName(QStringLiteral("commentBar"));
+        MainWindow->addToolBar(Qt::BottomToolBarArea, commentBar);
+        MainWindow->insertToolBarBreak(commentBar);
 
         toolBar_up->addAction(actionOpen);
         toolBar_down->addAction(actionPlay);
@@ -102,6 +107,7 @@ public:
 #endif // QT_NO_TOOLTIP
         toolBar_up->setWindowTitle(QApplication::translate("MainWindow", "toolBar", Q_NULLPTR));
         toolBar_down->setWindowTitle(QApplication::translate("MainWindow", "toolBar_2", Q_NULLPTR));
+        commentBar->setWindowTitle(QApplication::translate("MainWindow", "toolBar", Q_NULLPTR));
     } // retranslateUi
 
 };

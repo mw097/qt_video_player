@@ -64,13 +64,18 @@ MainWindow::MainWindow(QWidget *parent)
     ui->statusbar->addWidget(browser); //Adding space between Sliders
     browser->setStyleSheet(" QLabel{ color: #fff; } ");
 
-
     //CommentBar
     comment = new QLineEdit(this);
     ui->commentBar->addWidget(comment);
     ui->commentBar->setStyleSheet("QToolBar {background:#fff; height: 40px;}");
     comment->setStyleSheet(" QLineEdit{ background:#fff; color: #000; } ");
     comment->setPlaceholderText("Type comment here...");
+
+    comment_btn = new QPushButton;
+    connect(comment_btn, SIGNAL(clicked()), this , SLOT(on_comment_btn_triggered()));
+    ui->commentBar->addWidget(comment_btn);
+    comment_btn->setText("+");
+    comment_btn->setStyleSheet(" QLineEdit{ background:#fff; color: #000; } ");
 
 
 
@@ -105,4 +110,9 @@ void MainWindow::on_actionBeginning_triggered()
 {
     player->stop();
     browser->setText("Stop Button");
+}
+
+void MainWindow::on_comment_btn_triggered()
+{
+    browser->setText("Comment Button");
 }

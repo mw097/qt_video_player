@@ -8,7 +8,7 @@
 #include <QSlider>
 #include <QLabel>
 #include <QLineEdit>
-
+#include <QPushButton>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -30,6 +30,8 @@ private slots:
     void on_actionStop_triggered();
 
     void on_actionBeginning_triggered();
+
+    void on_comment_btn_triggered();
 
 private:
     Ui::MainWindow *ui;
