@@ -62,7 +62,12 @@ MainWindow::MainWindow(QWidget *parent)
     //Status Bar For Comments and Actions
     browser = new QLabel(this);
     ui->statusbar->addWidget(browser); //Adding space between Sliders
-    browser->setStyleSheet(" QLabel{ color: #fff;} ");
+    browser->setStyleSheet(" QLabel{ color: #fff; } ");
+
+
+    //CommentBar
+
+
 }
 
 MainWindow::~MainWindow()
