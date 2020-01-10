@@ -47,6 +47,7 @@ MainWindow::MainWindow(QWidget *parent)
     volume_slider = new QSlider(this);
     volume_slider->setOrientation(Qt::Horizontal); //Making slider horizontal
     ui->toolBar_down->addWidget(volume_slider); //Adding slider to toolbar
+    volume_slider->setValue(50); //Set default value
 
     // Connecting VolumeSlider With the Player
     connect(volume_slider,&QSlider::sliderMoved, player, &QMediaPlayer::setVolume);
