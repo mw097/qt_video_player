@@ -114,7 +114,7 @@ void MainWindow::on_actionBeginning_triggered()
 
 void MainWindow::on_comment_btn_triggered()
 {
-    int commentTime = player->position();
+    qint64 commentTime = player->position();
     QString commentText = comment->text();
 
     qDebug() << "time: " << commentTime << "text: " << commentText;
