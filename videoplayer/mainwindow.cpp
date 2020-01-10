@@ -58,6 +58,11 @@ MainWindow::MainWindow(QWidget *parent)
     QImage image3(img3);
     space3->setPixmap(QPixmap::fromImage(image3));
     ui->toolBar_down->addWidget(space3); //Adding space between Sliders
+
+    //Status Bar For Comments and Actions
+    browser = new QLabel(this);
+    ui->statusbar->addWidget(browser); //Adding space between Sliders
+    browser->setStyleSheet(" QLabel{ color: #fff;} ");
 }
 
 MainWindow::~MainWindow()
@@ -70,19 +75,23 @@ void MainWindow::on_actionOpen_triggered()
     QString filename = QFileDialog::getOpenFileName(this, "Open a file","","Video Files (*.avi *.mpg *.mp4)");
     on_actionStop_triggered();
     player->setMedia(QUrl::fromLocalFile(filename));
+    browser->setText("Open Button");
 }
 
 void MainWindow::on_actionPlay_triggered()
 {
     player->play();
+    browser->setText("Play Button");
 }
 
 void MainWindow::on_actionStop_triggered()
 {
     player->pause();
+    browser->setText("Pause Button");
 }
 
 void MainWindow::on_actionBeginning_triggered()
 {
     player->stop();
+    browser->setText("Stop Button");
 }
