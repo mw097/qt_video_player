@@ -53,21 +53,25 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 29));
+        menubar->setGeometry(QRect(0, 0, 800, 26));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
+        statusbar->setSizeGripEnabled(false);
         MainWindow->setStatusBar(statusbar);
         toolBar_up = new QToolBar(MainWindow);
         toolBar_up->setObjectName(QString::fromUtf8("toolBar_up"));
         toolBar_up->setStyleSheet(QString::fromUtf8("background: #fff;"));
+        toolBar_up->setMovable(false);
         MainWindow->addToolBar(Qt::TopToolBarArea, toolBar_up);
         toolBar_down = new QToolBar(MainWindow);
         toolBar_down->setObjectName(QString::fromUtf8("toolBar_down"));
         toolBar_down->setStyleSheet(QString::fromUtf8("background: #fff;"));
+        toolBar_down->setMovable(false);
         MainWindow->addToolBar(Qt::BottomToolBarArea, toolBar_down);
         commentBar = new QToolBar(MainWindow);
         commentBar->setObjectName(QString::fromUtf8("commentBar"));
+        commentBar->setMovable(false);
         MainWindow->addToolBar(Qt::BottomToolBarArea, commentBar);
         MainWindow->insertToolBarBreak(commentBar);
 
