@@ -7,6 +7,8 @@
 #include <QFileDialog>
 #include <QSlider>
 #include <QLabel>
+#include <QComboBox>
+#include <QInputDialog>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -29,6 +31,8 @@ private slots:
 
     void on_actionBeginning_triggered();
 
+    void on_actionAdd_Bookmark_triggered();
+
 private:
     Ui::MainWindow *ui;
     /*Handles decompresing and decoding a file*/
@@ -40,6 +44,8 @@ private:
     QLabel* space1;
     QLabel* space2;
     QLabel* space3;
+    QComboBox* bookmarks;
+    QInputDialog* bookmarkDialog;
 
 };
 #endif // MAINWINDOW_H

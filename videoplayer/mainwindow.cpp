@@ -57,6 +57,15 @@ MainWindow::MainWindow(QWidget *parent)
     QImage image3(img3);
     space3->setPixmap(QPixmap::fromImage(image3));
     ui->toolBar_down->addWidget(space3); //Adding space between Sliders
+
+    //Add ComboBox bookmarks
+    bookmarks = new QComboBox(this);
+    bookmarks->addItem("Choose bookmark...");
+    ui->toolBar_up->addWidget(bookmarks);
+
+    //Add bookmarks button
+    bookmarkDialog = new QInputDialog(this);
+
 }
 
 MainWindow::~MainWindow()
@@ -84,4 +93,10 @@ void MainWindow::on_actionStop_triggered()
 void MainWindow::on_actionBeginning_triggered()
 {
     player->stop();
+}
+
+void MainWindow::on_actionAdd_Bookmark_triggered()
+{
+    bookmarks->addItem("MARK2");
+    bookmarkDialog->show();
 }
