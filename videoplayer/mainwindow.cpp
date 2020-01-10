@@ -66,6 +66,12 @@ MainWindow::MainWindow(QWidget *parent)
 
 
     //CommentBar
+    comment = new QLineEdit(this);
+    ui->commentBar->addWidget(comment);
+    ui->commentBar->setStyleSheet("QToolBar {background:#fff; height: 40px;}");
+    comment->setStyleSheet(" QLineEdit{ background:#fff; color: #000; } ");
+    comment->setPlaceholderText("Type comment here...");
+
 
 
 }

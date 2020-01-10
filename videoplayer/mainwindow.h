@@ -7,7 +7,8 @@
 #include <QFileDialog>
 #include <QSlider>
 #include <QLabel>
-#include <QTextBrowser>
+#include <QLineEdit>
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -42,8 +43,8 @@ private:
     QLabel* space1;
     QLabel* space2;
     QLabel* space3;
-    QTextBrowser* comment;
-    QTextBrowser* comment_time;
+    QLineEdit* comment;
+    //QTextBrowser* comment_time;
     QPushButton* comment_btn;
 };
 #endif // MAINWINDOW_H
