@@ -64,9 +64,6 @@ MainWindow::MainWindow(QWidget *parent)
     bookmarks->addItem("Choose bookmark...");
     ui->toolBar_up->addWidget(bookmarks);
 
-    //Add bookmarks button
-    bookmarkDialog = new QInputDialog(this);
-
     //Status Bar For Comments and Actions
     browser = new QLabel(this);
     ui->statusbar->addWidget(browser); //Adding space between Sliders
@@ -132,7 +129,12 @@ void MainWindow::on_comment_btn_triggered()
 
 void MainWindow::on_actionAdd_Bookmark_triggered()
 {
-    bookmarks->addItem("MARK2");
-    database->addBookmark("My Bookmark 1", 2.11);
-    bookmarkDialog->show();
+    bookmarkText = QInputDialog::getText(this, tr("Insert bookmark name"),
+                                         tr("Bookmark name:"), QLineEdit::Normal,
+                                         "Bookmark 1", &ok);
+    if (ok && !bookmarkText.isEmpty())
+    {
+        bookmarks->addItem(bookmarkText);
+        database->addBookmark(bookmarkText, 2.11);
+    }
 }

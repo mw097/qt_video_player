@@ -53,10 +53,11 @@ private:
     QLabel* space2;
     QLabel* space3;
     QComboBox* bookmarks;
-    QInputDialog* bookmarkDialog;
+    QString bookmarkText;
     QLineEdit* comment;
     //QTextBrowser* comment_time;
     QPushButton* comment_btn;
     DBManager *database;
+    bool ok;
 };
 #endif // MAINWINDOW_H
