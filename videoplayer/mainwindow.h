@@ -57,8 +57,6 @@ private:
     QLineEdit* comment;
     //QTextBrowser* comment_time;
     QPushButton* comment_btn;
-    int id;
-    QString hash;
-    QString title;
+    DBManager *database;
 };
 #endif // MAINWINDOW_H

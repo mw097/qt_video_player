@@ -36,3 +36,25 @@ bool DBManager::addMovie(const QString& title)
 
    return success;
 }
+
+bool DBManager::addBookmark(const QString &name, double time)
+{
+   bool success = false;
+   // you should check if args are ok first...
+   QSqlQuery query;
+   query.prepare("INSERT INTO bookmark (name, time) VALUES (:name, :time)");
+   query.bindValue(":name", name);
+   query.bindValue(":time", time);
+   if(query.exec())
+   {
+       success = true;
+       qDebug() << "addBookmark success";
+   }
+   else
+   {
+        qDebug() << "addBookmark error:" << query.lastError();
+   }
+
+   return success;
+}
+

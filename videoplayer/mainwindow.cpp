@@ -86,8 +86,8 @@ MainWindow::MainWindow(QWidget *parent)
     comment_btn->setStyleSheet(" QPushButton{ background:#fff; color: #000; border-radius:5px; border: 1px solid #999; height: 19px; width: 80px; margin: 0 5px; } ");
 
     //Add database
-    DBManager *db = new DBManager("..\\maindb.db");
-    db->addMovie("The Movie 5");
+    database = new DBManager("..\\maindb.db");
+    database->addMovie("The Movie 6");
 
 }
 
@@ -133,5 +133,6 @@ void MainWindow::on_comment_btn_triggered()
 void MainWindow::on_actionAdd_Bookmark_triggered()
 {
     bookmarks->addItem("MARK2");
+    database->addBookmark("My Bookmark 1", 2.11);
     bookmarkDialog->show();
 }
