@@ -12,7 +12,8 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QDebug>
-#include <QtSql/QSqlDatabase>
+
+#include <dbmanager.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -56,5 +57,8 @@ private:
     QLineEdit* comment;
     //QTextBrowser* comment_time;
     QPushButton* comment_btn;
+    int id;
+    QString hash;
+    QString title;
 };
 #endif // MAINWINDOW_H

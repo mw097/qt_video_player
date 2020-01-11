@@ -86,15 +86,8 @@ MainWindow::MainWindow(QWidget *parent)
     comment_btn->setStyleSheet(" QPushButton{ background:#fff; color: #000; border-radius:5px; border: 1px solid #999; height: 19px; width: 80px; margin: 0 5px; } ");
 
     //Add database
-    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE", "file");
-    db.setDatabaseName("C:\\Users\\mw097\\Desktop\\sqlite-tools-win32-x86-3300100\\mydb.db");
-    db.setUserName("");
-    db.setPassword("");
-    if(db.open())
-    {
-        qDebug() << "Error open db";
-    }
-
+    DBManager *db = new DBManager("..\\maindb.db");
+    db->addMovie("The Movie 5");
 
 }
 
