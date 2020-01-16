@@ -94,6 +94,21 @@ MainWindow::MainWindow(QWidget *parent)
 
 }
 
+void MainWindow::LookForComments()
+{
+    while(1)
+    {
+          QFileInfo fi(filename);
+          QString base = fi.baseName();
+          qint64 currentPosition = player->position();
+          int commentTime = database->getCommentTime(base);
+          if(currentPosition == commentTime)
+          {
+            browser->setText(database->getCommentText(commentTime));
+          }
+    }
+}
+
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -112,6 +127,9 @@ void MainWindow::on_actionOpen_triggered()
     database->addMovie(base);
 
     browser->setText("Open Button");
+
+    LookForComments();
+
 }
 
 void MainWindow::on_actionPlay_triggered()

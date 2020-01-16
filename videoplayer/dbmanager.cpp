@@ -99,13 +99,13 @@ double DBManager::getBookmarkTime(const QString &name)
     return time;
 }
 
-bool DBManager::addComment(const QString& name, double time, const QString& comment)
+bool DBManager::addComment(const QString& name, int time, const QString& comment)
 {
     bool success = false;
     // you should check if args are ok first...
     QSqlQuery query;
     query.prepare("INSERT INTO comments (name, time, comment) VALUES (:name, :time, :comment)");
-    query.bindValue(":hash", name);
+    query.bindValue(":name", name);
     query.bindValue(":time", time);
     query.bindValue(":comment", comment);
     if(query.exec())
@@ -119,6 +119,47 @@ bool DBManager::addComment(const QString& name, double time, const QString& comm
     }
 
     return success;
+}
+
+int DBManager::getCommentTime(const QString& name)
+{
+    QSqlQuery query;
+    int time = 0;
+    query.prepare("SELECT time FROM comments WHERE name='"+name+"'");
+    if(query.exec())
+    {
+        qDebug() << "getCommentTime success";
+    }
+    else
+    {
+         qDebug() << "getCommentTime error:" << query.lastError();
+    }
+    while (query.next())
+    {
+            time = query.value(0).toInt();
+    }
+    return time;
+}
+
+QString DBManager::getCommentText(int& commentTime)
+{
+    QSqlQuery query;
+    QString comment;
+    query.bindValue(":time", commentTime);
+    query.prepare("SELECT comment FROM comments WHERE time = :time");
+    if(query.exec())
+    {
+        qDebug() << "getComment success";
+    }
+    else
+    {
+         qDebug() << "getComment error:" << query.lastError();
+    }
+    while (query.next())
+    {
+            comment = query.value(0).toString();
+    }
+    return comment;
 }
 
 
