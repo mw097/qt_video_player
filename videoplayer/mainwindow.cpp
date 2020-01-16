@@ -84,13 +84,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     //Add database
     database = new DBManager("..\\maindb.db");
-    database->addMovie("The Movie 6");
-
-    database->getMovieHash("1");
-    database->getBookmarkTime("BKM");
-
-    //connect(bookmarks, &QComboBox::activated, player, &QMediaPlayer::setPosition);
-    //connect(bookmarks, &QComboBox::activated,  );
 
 }
 
@@ -107,7 +100,6 @@ void MainWindow::on_actionOpen_triggered()
     base = fi.baseName();
     on_actionStop_triggered();
     player->setMedia(QUrl::fromLocalFile(filename));
-
 
     database->addMovie(base);
 
@@ -148,6 +140,6 @@ void MainWindow::on_actionAdd_Bookmark_triggered()
     if (ok && !bookmarkText.isEmpty())
     {
         bookmarks->addItem(bookmarkText);
-        database->addBookmark(bookmarkText, (player->position())/1000.0/60.0, database->getMovieID(base));
+        database->addBookmark(bookmarkText, (player->position())/1000.0/60.0, base);
     }
 }

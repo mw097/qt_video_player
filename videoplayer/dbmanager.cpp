@@ -17,6 +17,10 @@ DBManager::DBManager(const QString& path)
 
 bool DBManager::addMovie(const QString& title)
 {
+   if(!checkUnique(title))
+   {
+       return false;
+   }
    bool success = false;
    // you should check if args are ok first...
    QSqlQuery query;
@@ -37,15 +41,15 @@ bool DBManager::addMovie(const QString& title)
    return success;
 }
 
-bool DBManager::addBookmark(const QString &name, double time, int movieid)
+bool DBManager::addBookmark(const QString &name, double time, QString title)
 {
    bool success = false;
    // you should check if args are ok first...
    QSqlQuery query;
-   query.prepare("INSERT INTO bookmark (name, time, movie_id) VALUES (:name, :time, :movieid)");
+   query.prepare("INSERT INTO bookmark (name, time, title) VALUES (:name, :time, :title)");
    query.bindValue(":name", name);
    query.bindValue(":time", time);
-   query.bindValue(":movie_id", movieid);
+   query.bindValue(":title", title);
    if(query.exec())
    {
        success = true;
@@ -141,6 +145,31 @@ int DBManager::getMovieID(const QString &title)
             qDebug() << id;
     }
     return id;
+}
+
+bool DBManager::checkUnique(const QString &title)
+{
+    QSqlQuery query;
+    QString checkValue;
+    query.prepare("SELECT title FROM file WHERE title='"+title+"'");
+    if(query.exec())
+    {
+        qDebug() << "checkUnique success";
+    }
+    else
+    {
+         qDebug() << "checkUnique error:" << query.lastError();
+    }
+    while (query.next())
+    {
+            checkValue = query.value(0).toString();
+            qDebug() << checkValue;
+    }
+    if(checkValue == "")
+    {
+        return true;
+    }
+    return false;
 }
 
 
