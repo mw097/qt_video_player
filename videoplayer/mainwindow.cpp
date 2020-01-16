@@ -90,7 +90,7 @@ MainWindow::MainWindow(QWidget *parent)
     database->getBookmarkTime("BKM");
 
     //connect(bookmarks, &QComboBox::activated, player, &QMediaPlayer::setPosition);
-    connect(bookmarks, &QComboBox::activated, );
+    //connect(bookmarks, &QComboBox::activated,  );
 
 }
 
@@ -102,8 +102,15 @@ MainWindow::~MainWindow()
 void MainWindow::on_actionOpen_triggered()
 {
     QString filename = QFileDialog::getOpenFileName(this, "Open a file","","Video Files (*.avi *.mpg *.mp4)");
+
+    QFileInfo fi(filename);
+    QString base = fi.baseName();
     on_actionStop_triggered();
     player->setMedia(QUrl::fromLocalFile(filename));
+
+
+    database->addMovie(base);
+
     browser->setText("Open Button");
 }
 
