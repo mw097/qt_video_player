@@ -37,14 +37,15 @@ bool DBManager::addMovie(const QString& title)
    return success;
 }
 
-bool DBManager::addBookmark(const QString &name, double time)
+bool DBManager::addBookmark(const QString &name, double time, int movieid)
 {
    bool success = false;
    // you should check if args are ok first...
    QSqlQuery query;
-   query.prepare("INSERT INTO bookmark (name, time) VALUES (:name, :time)");
+   query.prepare("INSERT INTO bookmark (name, time, movie_id) VALUES (:name, :time, :movieid)");
    query.bindValue(":name", name);
    query.bindValue(":time", time);
+   query.bindValue(":movie_id", movieid);
    if(query.exec())
    {
        success = true;
@@ -119,6 +120,27 @@ bool DBManager::addComment(const QString& hash, double time, const QString& comm
     }
 
     return success;
+}
+
+int DBManager::getMovieID(const QString &title)
+{
+    QSqlQuery query;
+    int id = 0;
+    query.prepare("SELECT id FROM file WHERE title='"+title+"'");
+    if(query.exec())
+    {
+        qDebug() << "getMovieID success";
+    }
+    else
+    {
+         qDebug() << "getMovieID error:" << query.lastError();
+    }
+    while (query.next())
+    {
+            id = query.value(0).toInt();
+            qDebug() << id;
+    }
+    return id;
 }
 
 

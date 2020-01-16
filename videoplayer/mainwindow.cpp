@@ -104,7 +104,7 @@ void MainWindow::on_actionOpen_triggered()
     QString filename = QFileDialog::getOpenFileName(this, "Open a file","","Video Files (*.avi *.mpg *.mp4)");
 
     QFileInfo fi(filename);
-    QString base = fi.baseName();
+    base = fi.baseName();
     on_actionStop_triggered();
     player->setMedia(QUrl::fromLocalFile(filename));
 
@@ -148,6 +148,6 @@ void MainWindow::on_actionAdd_Bookmark_triggered()
     if (ok && !bookmarkText.isEmpty())
     {
         bookmarks->addItem(bookmarkText);
-        database->addBookmark(bookmarkText, (player->position())/1000.0/60.0);
+        database->addBookmark(bookmarkText, (player->position())/1000.0/60.0, database->getMovieID(base));
     }
 }
