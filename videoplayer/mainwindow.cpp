@@ -7,6 +7,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    thread = new QThread(this);
+
     // Setting QMediaPlayer and QVideoWidget
     player = new QMediaPlayer(this);
     canvas = new QVideoWidget(this);
@@ -92,12 +94,18 @@ MainWindow::MainWindow(QWidget *parent)
     //connect(bookmarks, &QComboBox::activated, player, &QMediaPlayer::setPosition);
     //connect(bookmarks, &QComboBox::activated,  );
 
+    if(&QMediaPlayer::positionChanged)
+    {
+        emit(onPositionChange());
+    }
+
+    connect(player,SIGNAL(onPositionChange()), this , SLOT(LookForComments()));
+
 }
 
 void MainWindow::LookForComments()
 {
-    while(1)
-    {
+
           QFileInfo fi(filename);
           QString base = fi.baseName();
           qint64 currentPosition = player->position();
@@ -106,13 +114,17 @@ void MainWindow::LookForComments()
           {
             browser->setText(database->getCommentText(commentTime));
           }
-    }
+          thread->sleep(1);
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+
+
 
 void MainWindow::on_actionOpen_triggered()
 {

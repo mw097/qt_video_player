@@ -25,7 +25,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void LookForComments();
+    QMediaPlayer* player;
 
 private slots:
     void on_actionOpen_triggered();
@@ -40,10 +40,15 @@ private slots:
 
     void on_comment_btn_triggered();
 
+    void LookForComments();
+
+signals:
+    void onPositionChange();
+
 private:
     Ui::MainWindow *ui;
     /*Handles decompresing and decoding a file*/
-    QMediaPlayer* player;
+
     /*Medium through which the video will be displayed upon*/
     QVideoWidget* canvas;
     QSlider* time_slider;
@@ -60,5 +65,6 @@ private:
     DBManager *database;
     bool ok;
     QString filename;
+    QThread* thread;
 };
 #endif // MAINWINDOW_H

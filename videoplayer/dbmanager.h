@@ -6,6 +6,7 @@
 #include <QtSql/QSqlQuery>
 #include <QtSql/QSqlError>
 #include <QDebug>
+#include <QThread>
 
 class DBManager
 {
