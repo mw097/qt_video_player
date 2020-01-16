@@ -6,6 +6,7 @@
 #include <QtSql/QSqlQuery>
 #include <QtSql/QSqlError>
 #include <QDebug>
+#include <QMessageBox>
 
 class DBManager
 {
@@ -18,8 +19,10 @@ public:
     QString getMovieHash(const QString& title);
     double getBookmarkTime(const QString& name);
     int getMovieID(const QString &title);
+    QStringList getBookmarks(const QString title);
 private:
     bool checkUnique(const QString &title);
+    bool checkUniqueBookmark(const QString &bookmarkName, const QString &title);
     QSqlDatabase db;
 };
 

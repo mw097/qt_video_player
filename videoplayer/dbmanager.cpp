@@ -43,6 +43,13 @@ bool DBManager::addMovie(const QString& title)
 
 bool DBManager::addBookmark(const QString &name, double time, QString title)
 {
+    if(!checkUniqueBookmark(name, title))
+    {
+        QMessageBox msgBox;
+        msgBox.setText("That bookmark name exists!");
+        msgBox.exec();
+        return false;
+    }
    bool success = false;
    // you should check if args are ok first...
    QSqlQuery query;
@@ -147,6 +154,31 @@ int DBManager::getMovieID(const QString &title)
     return id;
 }
 
+QStringList DBManager::getBookmarks(const QString title)
+{
+    QSqlQuery query;
+    QStringList bookmarkList;
+    query.prepare("SELECT name FROM bookmark WHERE title='"+title+"'");
+    if(query.exec())
+    {
+        qDebug() << "getBookmarks success";
+    }
+    else
+    {
+         qDebug() << "getBookmarks error:" << query.lastError();
+    }
+    int i = 0;
+    while (query.next())
+    {
+        bookmarkList << query.value(0).toString();
+        qDebug() << "Lista bookmark: " << bookmarkList[i];
+        i++;
+
+    }
+
+    return bookmarkList;
+}
+
 bool DBManager::checkUnique(const QString &title)
 {
     QSqlQuery query;
@@ -163,7 +195,30 @@ bool DBManager::checkUnique(const QString &title)
     while (query.next())
     {
             checkValue = query.value(0).toString();
-            qDebug() << checkValue;
+    }
+    if(checkValue == "")
+    {
+        return true;
+    }
+    return false;
+}
+
+bool DBManager::checkUniqueBookmark(const QString &bookmarkName, const QString &title)
+{
+    QSqlQuery query;
+    QString checkValue;
+    query.prepare("SELECT name FROM bookmark WHERE name='"+bookmarkName+"' AND title='"+title+"'");
+    if(query.exec())
+    {
+        qDebug() << "checkUniqueBookmark success";
+    }
+    else
+    {
+         qDebug() << "checkUniqueBookmark error:" << query.lastError();
+    }
+    while (query.next())
+    {
+            checkValue = query.value(0).toString();
     }
     if(checkValue == "")
     {

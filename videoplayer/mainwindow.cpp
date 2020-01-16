@@ -103,6 +103,8 @@ void MainWindow::on_actionOpen_triggered()
 
     database->addMovie(base);
 
+    database->getBookmarks(base);
+
     browser->setText("Open Button");
 }
 
