@@ -63,6 +63,8 @@ MainWindow::MainWindow(QWidget *parent)
     bookmarks = new QComboBox(this);
     bookmarks->addItem("Choose bookmark...");
     ui->toolBar_up->addWidget(bookmarks);
+    //connect(bookmarks, QOverload<int>::of(&QComboBox, this , SLOT(on_bookmarkIndex_triggered()));
+    connect(bookmarks, SIGNAL(currentTextChanged(QString)), this, SLOT(on_bookmarkIndex_triggered()));
 
     //Status Bar For Comments and Actions
     browser = new QLabel(this);
@@ -103,7 +105,8 @@ void MainWindow::on_actionOpen_triggered()
 
     database->addMovie(base);
 
-    database->getBookmarks(base);
+    QStringList bookmarkList = database->getBookmarks(base);
+    bookmarks->addItems(bookmarkList);
 
     browser->setText("Open Button");
 }
@@ -142,6 +145,13 @@ void MainWindow::on_actionAdd_Bookmark_triggered()
     if (ok && !bookmarkText.isEmpty())
     {
         bookmarks->addItem(bookmarkText);
-        database->addBookmark(bookmarkText, (player->position())/1000.0/60.0, base);
+        database->addBookmark(bookmarkText, player->position(), base);
     }
+}
+
+void MainWindow::on_bookmarkIndex_triggered()
+{
+    const QString name = bookmarks->currentText();
+    int time = database->getBookmarkTime(name);
+    player->setPosition(time);
 }

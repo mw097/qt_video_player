@@ -39,6 +39,8 @@ private slots:
 
     void on_comment_btn_triggered();
 
+    void on_bookmarkIndex_triggered();
+
 private:
     Ui::MainWindow *ui;
     /*Handles decompresing and decoding a file*/

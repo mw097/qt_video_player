@@ -91,10 +91,10 @@ QString DBManager::getMovieHash(const QString &title)
     return hash;
 }
 
-double DBManager::getBookmarkTime(const QString &name)
+int DBManager::getBookmarkTime(const QString &name)
 {
     QSqlQuery query;
-    double time = .0;
+    int time = 0;
     query.prepare("SELECT time FROM bookmark WHERE name='"+name+"'");
     if(query.exec())
     {
@@ -106,7 +106,7 @@ double DBManager::getBookmarkTime(const QString &name)
     }
     while (query.next())
     {
-            time = query.value(0).toDouble();
+            time = query.value(0).toInt();
     }
     return time;
 }
@@ -167,13 +167,9 @@ QStringList DBManager::getBookmarks(const QString title)
     {
          qDebug() << "getBookmarks error:" << query.lastError();
     }
-    int i = 0;
     while (query.next())
     {
         bookmarkList << query.value(0).toString();
-        qDebug() << "Lista bookmark: " << bookmarkList[i];
-        i++;
-
     }
 
     return bookmarkList;

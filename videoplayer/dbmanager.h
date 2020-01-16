@@ -17,7 +17,7 @@ public:
     bool addComment(const QString& name, double time, const QString& comment);
     bool getMovies();
     QString getMovieHash(const QString& title);
-    double getBookmarkTime(const QString& name);
+    int getBookmarkTime(const QString& name);
     int getMovieID(const QString &title);
     QStringList getBookmarks(const QString title);
 private:
