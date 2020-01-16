@@ -99,13 +99,13 @@ double DBManager::getBookmarkTime(const QString &name)
     return time;
 }
 
-bool DBManager::addComment(const QString& hash, double time, const QString& comment)
+bool DBManager::addComment(const QString& name, double time, const QString& comment)
 {
     bool success = false;
     // you should check if args are ok first...
     QSqlQuery query;
-    query.prepare("INSERT INTO comments (hash, time, comment) VALUES (:hash, :time, :comment)");
-    query.bindValue(":hash", hash);
+    query.prepare("INSERT INTO comments (name, time, comment) VALUES (:name, :time, :comment)");
+    query.bindValue(":hash", name);
     query.bindValue(":time", time);
     query.bindValue(":comment", comment);
     if(query.exec())

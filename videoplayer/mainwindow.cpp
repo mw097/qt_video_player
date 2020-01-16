@@ -101,7 +101,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionOpen_triggered()
 {
-    QString filename = QFileDialog::getOpenFileName(this, "Open a file","","Video Files (*.avi *.mpg *.mp4)");
+    filename = QFileDialog::getOpenFileName(this, "Open a file","","Video Files (*.avi *.mpg *.mp4)");
 
     QFileInfo fi(filename);
     QString base = fi.baseName();
@@ -136,6 +136,10 @@ void MainWindow::on_comment_btn_triggered()
 {
     qint64 commentTime = player->position();
     QString commentText = comment->text();
+    QFileInfo fi(filename);
+    QString base = fi.baseName();
+
+    database->addComment(base,commentTime,commentText);
 
     qDebug() << "time: " << commentTime << "text: " << commentText;
 }

@@ -58,5 +58,6 @@ private:
     QPushButton* comment_btn;
     DBManager *database;
     bool ok;
+    QString filename;
 };
 #endif // MAINWINDOW_H
