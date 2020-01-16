@@ -13,6 +13,9 @@ public:
     DBManager(const QString& path);
     bool addMovie(const QString& title);
     bool addBookmark(const QString& name, double time);
+    bool getMovies();
+    QString getMovieHash(const QString& title);
+    double getBookmarkTime(const QString& name);
 private:
     QSqlDatabase db;
 };

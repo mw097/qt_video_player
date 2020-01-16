@@ -17,11 +17,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     dbmanager.cpp \
+    hashmanager.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     dbmanager.h \
+    hashmanager.h \
     mainwindow.h
 
 FORMS += \

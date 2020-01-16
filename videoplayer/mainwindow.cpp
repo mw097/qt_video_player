@@ -86,6 +86,12 @@ MainWindow::MainWindow(QWidget *parent)
     database = new DBManager("..\\maindb.db");
     database->addMovie("The Movie 6");
 
+    database->getMovieHash("1");
+    database->getBookmarkTime("BKM");
+
+    //connect(bookmarks, &QComboBox::activated, player, &QMediaPlayer::setPosition);
+    connect(bookmarks, &QComboBox::activated, );
+
 }
 
 MainWindow::~MainWindow()
@@ -135,6 +141,6 @@ void MainWindow::on_actionAdd_Bookmark_triggered()
     if (ok && !bookmarkText.isEmpty())
     {
         bookmarks->addItem(bookmarkText);
-        database->addBookmark(bookmarkText, 2.11);
+        database->addBookmark(bookmarkText, (player->position())/1000.0/60.0);
     }
 }
