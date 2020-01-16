@@ -144,8 +144,12 @@ void MainWindow::on_actionAdd_Bookmark_triggered()
                                          "Bookmark 1", &ok);
     if (ok && !bookmarkText.isEmpty())
     {
-        bookmarks->addItem(bookmarkText);
-        database->addBookmark(bookmarkText, player->position(), base);
+        if(database->checkUniqueBookmark(bookmarkText, base))
+        {
+            bookmarks->addItem(bookmarkText);
+        }
+
+         database->addBookmark(bookmarkText, player->position(), base);
     }
 }
 

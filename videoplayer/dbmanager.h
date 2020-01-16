@@ -20,9 +20,9 @@ public:
     int getBookmarkTime(const QString& name);
     int getMovieID(const QString &title);
     QStringList getBookmarks(const QString title);
+    bool checkUniqueBookmark(const QString &bookmarkName, const QString &title);
 private:
     bool checkUnique(const QString &title);
-    bool checkUniqueBookmark(const QString &bookmarkName, const QString &title);
     QSqlDatabase db;
 };
 

@@ -13,7 +13,7 @@
 #include <QPushButton>
 #include <QDebug>
 
-#include <dbmanager.h>
+#include "dbmanager.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
