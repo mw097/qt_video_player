@@ -43,15 +43,21 @@ bool DBManager::addMovie(const QString& title)
 
 bool DBManager::addBookmark(const QString &name, double time, QString title)
 {
-    if(!checkUniqueBookmark(name, title))
-    {
-        QMessageBox msgBox;
-        msgBox.setText("That bookmark name exists!");
-        msgBox.exec();
-        return false;
-    }
-   bool success = false;
    // you should check if args are ok first...
+   if(title == "")
+   {
+       QMessageBox msgBox;
+       msgBox.setText("You cannot add bookmark when you don't watch any movie.");
+       msgBox.exec();
+       return false;
+   }
+   if(!checkUniqueBookmark(name, title))
+   {
+       QMessageBox msgBox;
+       msgBox.setText("That bookmark name exists!");
+       msgBox.exec();
+       return false;
+   }
    QSqlQuery query;
    query.prepare("INSERT INTO bookmark (name, time, title) VALUES (:name, :time, :title)");
    query.bindValue(":name", name);
@@ -59,15 +65,14 @@ bool DBManager::addBookmark(const QString &name, double time, QString title)
    query.bindValue(":title", title);
    if(query.exec())
    {
-       success = true;
-       qDebug() << "addBookmark success";
+        qDebug() << "addBookmark success";
+        return true;
    }
    else
    {
         qDebug() << "addBookmark error:" << query.lastError();
+        return false;
    }
-
-   return success;
 }
 
 QString DBManager::getMovieHash(const QString &title)
@@ -102,11 +107,11 @@ int DBManager::getBookmarkTime(const QString &name)
     }
     else
     {
-         qDebug() << "getBookmarkTime error:" << query.lastError();
+        qDebug() << "getBookmarkTime error:" << query.lastError();
     }
     while (query.next())
     {
-            time = query.value(0).toInt();
+        time = query.value(0).toInt();
     }
     return time;
 }
@@ -190,7 +195,7 @@ bool DBManager::checkUnique(const QString &title)
     }
     while (query.next())
     {
-            checkValue = query.value(0).toString();
+        checkValue = query.value(0).toString();
     }
     if(checkValue == "")
     {
@@ -210,17 +215,16 @@ bool DBManager::checkUniqueBookmark(const QString &bookmarkName, const QString &
     }
     else
     {
-         qDebug() << "checkUniqueBookmark error:" << query.lastError();
+        qDebug() << "checkUniqueBookmark error:" << query.lastError();
     }
     while (query.next())
     {
-            checkValue = query.value(0).toString();
+        checkValue = query.value(0).toString();
     }
     if(checkValue == "")
     {
         return true;
     }
-    return false;
 }
 
 

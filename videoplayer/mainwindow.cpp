@@ -63,7 +63,6 @@ MainWindow::MainWindow(QWidget *parent)
     bookmarks = new QComboBox(this);
     bookmarks->addItem("Choose bookmark...");
     ui->toolBar_up->addWidget(bookmarks);
-    //connect(bookmarks, QOverload<int>::of(&QComboBox, this , SLOT(on_bookmarkIndex_triggered()));
     connect(bookmarks, SIGNAL(currentTextChanged(QString)), this, SLOT(on_bookmarkIndex_triggered()));
 
     //Status Bar For Comments and Actions
@@ -144,12 +143,14 @@ void MainWindow::on_actionAdd_Bookmark_triggered()
                                          "Bookmark 1", &ok);
     if (ok && !bookmarkText.isEmpty())
     {
-        if(database->checkUniqueBookmark(bookmarkText, base))
-        {
-            bookmarks->addItem(bookmarkText);
-        }
+        //if(database->checkUniqueBookmark(bookmarkText, base))
 
-         database->addBookmark(bookmarkText, player->position(), base);
+            //bookmarks->addItem(bookmarkText);
+            if(database->addBookmark(bookmarkText, player->position(), base))
+            {
+                bookmarks->addItem(bookmarkText);
+            }
+
     }
 }
 
