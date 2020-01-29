@@ -37,6 +37,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(player, &QMediaPlayer::durationChanged, time_slider, &QSlider::setMaximum);
     connect(player, &QMediaPlayer::positionChanged, time_slider, &QSlider::setValue);
     connect(time_slider, &QSlider::sliderMoved, player, &QMediaPlayer::setPosition);
+    connect(time_slider, &QSlider::sliderMoved, player, &QMediaPlayer::positionChanged);
 
     //Space Between Sliders
     space2 = new QLabel(this);
@@ -94,27 +95,24 @@ MainWindow::MainWindow(QWidget *parent)
     //connect(bookmarks, &QComboBox::activated, player, &QMediaPlayer::setPosition);
     //connect(bookmarks, &QComboBox::activated,  );
 
-    if(&QMediaPlayer::positionChanged)
-    {
-        emit(onPositionChange());
-    }
-
-    connect(player,SIGNAL(onPositionChange()), this , SLOT(LookForComments()));
-
+    //connect(player, SIGNAL(&QMediaPlayer::positionChanged()), this, SLOT(LookForComments()));
 }
 
 void MainWindow::LookForComments()
 {
-
+          qDebug() << "LOOK FOR COMMENTS";
           QFileInfo fi(filename);
           QString base = fi.baseName();
           qint64 currentPosition = player->position();
-          int commentTime = database->getCommentTime(base);
-          if(currentPosition == commentTime)
+          QList<int>::iterator i = commentTable.begin();
+          while( i != commentTable.end())
           {
-            browser->setText(database->getCommentText(commentTime));
+              if(currentPosition == *i)
+              {
+                  qDebug() << "i finded position" ;
+                  browser->setText(database->getCommentText(*i));
+              }
           }
-          thread->sleep(1);
 
 }
 
@@ -134,7 +132,7 @@ void MainWindow::on_actionOpen_triggered()
     QString base = fi.baseName();
     on_actionStop_triggered();
     player->setMedia(QUrl::fromLocalFile(filename));
-    QList<int> commentTable = database->getComments(base);
+    commentTable = database->getComments(base);
     QList<int>::iterator i = commentTable.begin();
     while( i != commentTable.end())
     {

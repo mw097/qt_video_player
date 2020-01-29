@@ -360,6 +360,7 @@ debug\moc_mainwindow.cpp: D:\Dev\5.9.9\msvc2015\include\QtWidgets\QMainWindow \
 		D:\Dev\5.9.9\msvc2015\include\QtSql\qsqlerror.h \
 		D:\Dev\5.9.9\msvc2015\include\QtCore\QThread \
 		D:\Dev\5.9.9\msvc2015\include\QtCore\qthread.h \
+		D:\Dev\5.9.9\msvc2015\include\QtGui\QList \
 		..\videoplayer\mainwindow.h \
 		debug\moc_predefs.h \
 		D:\Dev\5.9.9\msvc2015\bin\moc.exe
@@ -457,7 +458,25 @@ debug\dbmanager.obj: ..\videoplayer\dbmanager.cpp ../videoplayer/dbmanager.h \
 		D:\Dev\5.9.9\msvc2015\include\QtCore\qsharedpointer.h \
 		D:\Dev\5.9.9\msvc2015\include\QtCore\qsharedpointer_impl.h \
 		D:\Dev\5.9.9\msvc2015\include\QtCore\QThread \
-		D:\Dev\5.9.9\msvc2015\include\QtCore\qthread.h
+		D:\Dev\5.9.9\msvc2015\include\QtCore\qthread.h \
+		D:\Dev\5.9.9\msvc2015\include\QtGui\QList \
+		D:\Dev\5.9.9\msvc2015\include\QtGui\qevent.h \
+		D:\Dev\5.9.9\msvc2015\include\QtGui\qtguiglobal.h \
+		D:\Dev\5.9.9\msvc2015\include\QtGui\qtgui-config.h \
+		D:\Dev\5.9.9\msvc2015\include\QtGui\qwindowdefs.h \
+		D:\Dev\5.9.9\msvc2015\include\QtGui\qwindowdefs_win.h \
+		D:\Dev\5.9.9\msvc2015\include\QtGui\qregion.h \
+		D:\Dev\5.9.9\msvc2015\include\QtCore\qrect.h \
+		D:\Dev\5.9.9\msvc2015\include\QtCore\qmargins.h \
+		D:\Dev\5.9.9\msvc2015\include\QtCore\qsize.h \
+		D:\Dev\5.9.9\msvc2015\include\QtCore\qdatastream.h \
+		D:\Dev\5.9.9\msvc2015\include\QtGui\qkeysequence.h \
+		D:\Dev\5.9.9\msvc2015\include\QtCore\qurl.h \
+		D:\Dev\5.9.9\msvc2015\include\QtCore\qurlquery.h \
+		D:\Dev\5.9.9\msvc2015\include\QtCore\qfile.h \
+		D:\Dev\5.9.9\msvc2015\include\QtCore\qfiledevice.h \
+		D:\Dev\5.9.9\msvc2015\include\QtGui\qvector2d.h \
+		D:\Dev\5.9.9\msvc2015\include\QtGui\qtouchdevice.h
 
 debug\main.obj: ..\videoplayer\main.cpp ../videoplayer/mainwindow.h \
 		D:\Dev\5.9.9\msvc2015\include\QtWidgets\QMainWindow \
@@ -630,6 +649,7 @@ debug\main.obj: ..\videoplayer\main.cpp ../videoplayer/mainwindow.h \
 		D:\Dev\5.9.9\msvc2015\include\QtSql\qsqlerror.h \
 		D:\Dev\5.9.9\msvc2015\include\QtCore\QThread \
 		D:\Dev\5.9.9\msvc2015\include\QtCore\qthread.h \
+		D:\Dev\5.9.9\msvc2015\include\QtGui\QList \
 		D:\Dev\5.9.9\msvc2015\include\QtWidgets\QApplication \
 		D:\Dev\5.9.9\msvc2015\include\QtWidgets\qapplication.h \
 		D:\Dev\5.9.9\msvc2015\include\QtCore\qcoreapplication.h \
@@ -809,6 +829,7 @@ debug\mainwindow.obj: ..\videoplayer\mainwindow.cpp ../videoplayer/mainwindow.h 
 		D:\Dev\5.9.9\msvc2015\include\QtSql\qsqlerror.h \
 		D:\Dev\5.9.9\msvc2015\include\QtCore\QThread \
 		D:\Dev\5.9.9\msvc2015\include\QtCore\qthread.h \
+		D:\Dev\5.9.9\msvc2015\include\QtGui\QList \
 		ui_mainwindow.h
 
 debug\qrc_resources.obj: debug\qrc_resources.cpp 

@@ -42,8 +42,8 @@ private slots:
 
     void LookForComments();
 
+
 signals:
-    void onPositionChange();
 
 private:
     Ui::MainWindow *ui;
@@ -66,5 +66,6 @@ private:
     bool ok;
     QString filename;
     QThread* thread;
+    QList<int> commentTable;
 };
 #endif // MAINWINDOW_H
