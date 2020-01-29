@@ -43,7 +43,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    /*Handles decompresing and decoding a file*/
     QMediaPlayer* player;
     /*Medium through which the video will be displayed upon*/
     QVideoWidget* canvas;
