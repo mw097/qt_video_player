@@ -12,6 +12,7 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QDebug>
+#include <QTime>
 
 #include <dbmanager.h>
 
@@ -41,6 +42,7 @@ private slots:
     void on_comment_btn_triggered();
 
     void LookForComments();
+    void playerOnPositionChanged(qint64 position);
 
 
 signals:
@@ -66,6 +68,6 @@ private:
     bool ok;
     QString filename;
     QThread* thread;
-    QList<int> commentTable;
+    QList<qint64> commentTable;
 };
 #endif // MAINWINDOW_H

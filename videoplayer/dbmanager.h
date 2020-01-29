@@ -22,8 +22,8 @@ public:
     double getBookmarkTime(const QString& name);
 
     int getCommentTime(const QString& name);
-    QString getCommentText(int& commentTime);
-    QList<int> getComments(const QString& name);
+    QString getCommentText(qint64& commentTime);
+    QList<qint64> getComments(const QString& name);
 
 private:
     QSqlDatabase db;

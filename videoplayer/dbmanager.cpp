@@ -141,12 +141,13 @@ int DBManager::getCommentTime(const QString& name)
     return time;
 }
 
-QString DBManager::getCommentText(int& commentTime)
+QString DBManager::getCommentText(qint64& commentTime)
 {
     QSqlQuery query;
     QString comment;
+    QString sA = QString::number(commentTime);
     query.bindValue(":time", commentTime);
-    query.prepare("SELECT comment FROM comments WHERE time = :time");
+    query.prepare("SELECT comment FROM comments WHERE time = '"+sA+"'");
     if(query.exec())
     {
         qDebug() << "getComment success";
@@ -162,10 +163,10 @@ QString DBManager::getCommentText(int& commentTime)
     return comment;
 }
 
-QList<int> DBManager::getComments(const QString& name)
+QList<qint64> DBManager::getComments(const QString& name)
 {
     QSqlQuery query;
-    QList<int> table;
+    QList<qint64> table;
 
     query.prepare("SELECT time FROM comments WHERE name='"+name+"'");
     if(query.exec())
@@ -179,6 +180,7 @@ QList<int> DBManager::getComments(const QString& name)
      while (query.next())
      {
          table << query.value(0).toInt();
+         qDebug()<< query.value(0).toInt();
      }
     return table;
 }

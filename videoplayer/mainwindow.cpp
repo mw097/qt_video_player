@@ -96,6 +96,33 @@ MainWindow::MainWindow(QWidget *parent)
     //connect(bookmarks, &QComboBox::activated,  );
 
     //connect(player, SIGNAL(&QMediaPlayer::positionChanged()), this, SLOT(LookForComments()));
+
+//    if(&QMediaPlayer::positionChanged)
+//    {
+//        emit(onPositionChange());
+//    }
+
+//    connect(player,SIGNAL(onPositionChange()), this , SLOT(LookForComments()));
+     connect(player, SIGNAL(positionChanged(qint64)), this, SLOT(playerOnPositionChanged(qint64)));
+
+}
+
+void MainWindow::playerOnPositionChanged(qint64 position) {
+
+    //QList<int>::iterator i = commentTable.begin();
+    for(qint64 i : commentTable)
+    {
+        qDebug() << "1" << position << i;
+        if(position> i-1000 & position<i+1000)
+        {
+            qDebug() << "2";
+            //browser->setText(database->getCommentText(*i));
+            browser->setText(database->getCommentText(i));
+            qDebug() << database->getCommentText(i);
+        }
+    }
+
+    qDebug() << time;
 }
 
 void MainWindow::LookForComments()
@@ -104,7 +131,7 @@ void MainWindow::LookForComments()
           QFileInfo fi(filename);
           QString base = fi.baseName();
           qint64 currentPosition = player->position();
-          QList<int>::iterator i = commentTable.begin();
+          QList<qint64>::iterator i = commentTable.begin();
           while( i != commentTable.end())
           {
               if(currentPosition == *i)
@@ -133,7 +160,7 @@ void MainWindow::on_actionOpen_triggered()
     on_actionStop_triggered();
     player->setMedia(QUrl::fromLocalFile(filename));
     commentTable = database->getComments(base);
-    QList<int>::iterator i = commentTable.begin();
+    QList<qint64>::iterator i = commentTable.begin();
     while( i != commentTable.end())
     {
         qDebug() << *i ;
