@@ -15,10 +15,7 @@ public:
     bool addMovie(const QString& title);
     bool addBookmark(const QString& name, double time, QString title);
     bool addComment(const QString& name, double time, const QString& comment);
-    bool getMovies();
-    QString getMovieHash(const QString& title);
     int getBookmarkTime(const QString& name);
-    int getMovieID(const QString &title);
     QStringList getBookmarks(const QString title);
     bool checkUniqueBookmark(const QString &bookmarkName, const QString &title);
 private:

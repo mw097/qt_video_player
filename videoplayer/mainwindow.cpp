@@ -104,7 +104,6 @@ void MainWindow::on_actionOpen_triggered()
 
     database->addMovie(base);
 
-
     QStringList bookmarkList;
     bookmarkList = database->getBookmarks(base);
     bookmarks->clear();
@@ -146,14 +145,10 @@ void MainWindow::on_actionAdd_Bookmark_triggered()
                                          "Bookmark 1", &ok);
     if (ok && !bookmarkText.isEmpty())
     {
-        //if(database->checkUniqueBookmark(bookmarkText, base))
-
-            //bookmarks->addItem(bookmarkText);
-            if(database->addBookmark(bookmarkText, player->position(), base))
-            {
-                bookmarks->addItem(bookmarkText);
-            }
-
+        if(database->addBookmark(bookmarkText, player->position(), base))
+        {
+            bookmarks->addItem(bookmarkText);
+        }
     }
 }
 

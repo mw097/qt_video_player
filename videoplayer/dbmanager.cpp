@@ -22,7 +22,6 @@ bool DBManager::addMovie(const QString& title)
        return false;
    }
    bool success = false;
-   // you should check if args are ok first...
    QSqlQuery query;
    QString hash = "HASH"; ///<--
    query.prepare("INSERT INTO file (hash, title) VALUES (:hash, :title)");
@@ -75,27 +74,6 @@ bool DBManager::addBookmark(const QString &name, double time, QString title)
    }
 }
 
-QString DBManager::getMovieHash(const QString &title)
-{
-    QSqlQuery query;
-    QString hash;
-    query.prepare("SELECT hash FROM file WHERE id='"+title+"'");
-    if(query.exec())
-    {
-        qDebug() << "getMovie success";
-    }
-    else
-    {
-         qDebug() << "getMovie error:" << query.lastError();
-    }
-
-    while (query.next())
-    {
-            hash = query.value(0).toString();
-    }
-    return hash;
-}
-
 int DBManager::getBookmarkTime(const QString &name)
 {
     QSqlQuery query;
@@ -136,27 +114,6 @@ bool DBManager::addComment(const QString& hash, double time, const QString& comm
     }
 
     return success;
-}
-
-int DBManager::getMovieID(const QString &title)
-{
-    QSqlQuery query;
-    int id = 0;
-    query.prepare("SELECT id FROM file WHERE title='"+title+"'");
-    if(query.exec())
-    {
-        qDebug() << "getMovieID success";
-    }
-    else
-    {
-         qDebug() << "getMovieID error:" << query.lastError();
-    }
-    while (query.next())
-    {
-            id = query.value(0).toInt();
-            qDebug() << id;
-    }
-    return id;
 }
 
 QStringList DBManager::getBookmarks(const QString title)
