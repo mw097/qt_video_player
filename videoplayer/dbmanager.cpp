@@ -225,6 +225,6 @@ bool DBManager::checkUniqueBookmark(const QString &bookmarkName, const QString &
     {
         return true;
     }
+    return false;
 }
-
 

@@ -104,7 +104,10 @@ void MainWindow::on_actionOpen_triggered()
 
     database->addMovie(base);
 
-    QStringList bookmarkList = database->getBookmarks(base);
+
+    QStringList bookmarkList;
+    bookmarkList = database->getBookmarks(base);
+    bookmarks->clear();
     bookmarks->addItems(bookmarkList);
 
     browser->setText("Open Button");
