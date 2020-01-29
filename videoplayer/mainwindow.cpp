@@ -134,13 +134,19 @@ void MainWindow::on_actionOpen_triggered()
     QString base = fi.baseName();
     on_actionStop_triggered();
     player->setMedia(QUrl::fromLocalFile(filename));
-
+    QList<int> commentTable = database->getComments(base);
+    QList<int>::iterator i = commentTable.begin();
+    while( i != commentTable.end())
+    {
+        qDebug() << *i ;
+        ++i;
+    }
 
     database->addMovie(base);
 
     browser->setText("Open Button");
 
-    LookForComments();
+    //LookForComments();
 
 }
 

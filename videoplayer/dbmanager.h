@@ -7,7 +7,7 @@
 #include <QtSql/QSqlError>
 #include <QDebug>
 #include <QThread>
-#include <vector>
+#include <QList>
 using namespace std;
 
 class DBManager
@@ -23,7 +23,7 @@ public:
 
     int getCommentTime(const QString& name);
     QString getCommentText(int& commentTime);
-    vector<int> getComments( vector<int> table);
+    QList<int> getComments(const QString& name);
 
 private:
     QSqlDatabase db;

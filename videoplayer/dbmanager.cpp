@@ -162,23 +162,23 @@ QString DBManager::getCommentText(int& commentTime)
     return comment;
 }
 
-vector<int> DBManager::getComments(const QString& name, vector<int> table)
+QList<int> DBManager::getComments(const QString& name)
 {
     QSqlQuery query;
-    int i = 1;
+    QList<int> table;
+
     query.prepare("SELECT time FROM comments WHERE name='"+name+"'");
     if(query.exec())
      {
-        qDebug() << "getBookmarks success";
+        qDebug() << "getComments success";
      }
      else
      {
-        qDebug() << "getBookmarks error:" << query.lastError();
+        qDebug() << "getComments error:" << query.lastError();
      }
      while (query.next())
      {
-         table[i] = query.value(0).toInt();
-         i++;
+         table << query.value(0).toInt();
      }
     return table;
 }
