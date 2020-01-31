@@ -86,11 +86,34 @@ MainWindow::MainWindow(QWidget *parent)
     //Add database
     database = new DBManager("..\\maindb.db");
 
+    //connect comments
+    connect(player, SIGNAL(positionChanged(qint64)), this, SLOT(playerOnPositionChanged(qint64)));
+
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+
+void MainWindow::playerOnPositionChanged(qint64 position) {
+
+    //QList<int>::iterator i = commentTable.begin();
+    for(qint64 i : commentTable)
+    {
+        qDebug() << "1" << position << i;
+        if(position> i-1000 & position<i+1000)
+        {
+            qDebug() << "2";
+            //browser->setText(database->getCommentText(*i));
+            browser->setText(database->getCommentText(i));
+            qDebug() << database->getCommentText(i);
+        }
+    }
+
+    qDebug() << time;
 }
 
 void MainWindow::on_actionOpen_triggered()
@@ -101,6 +124,14 @@ void MainWindow::on_actionOpen_triggered()
     base = fi.baseName();
     on_actionStop_triggered();
     player->setMedia(QUrl::fromLocalFile(filename));
+
+    commentTable = database->getComments(base);
+    QList<qint64>::iterator i = commentTable.begin();
+    while( i != commentTable.end())
+    {
+        qDebug() << *i ;
+        ++i;
+    }
 
     database->addMovie(base);
 
@@ -134,7 +165,11 @@ void MainWindow::on_comment_btn_triggered()
 {
     qint64 commentTime = player->position();
     QString commentText = comment->text();
+    QFileInfo fi(filename);
+    QString base = fi.baseName();
 
+    database->addComment(base,commentTime,commentText);
+    browser->setText(commentText);
     qDebug() << "time: " << commentTime << "text: " << commentText;
 }
 

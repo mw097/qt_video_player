@@ -12,6 +12,7 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QDebug>
+#include <QTime>
 
 #include "dbmanager.h"
 
@@ -41,6 +42,8 @@ private slots:
 
     void on_bookmarkIndex_triggered();
 
+    void playerOnPositionChanged(qint64 position);
+
 private:
     Ui::MainWindow *ui;
     /*Handles decompresing and decoding a file*/
@@ -61,5 +64,8 @@ private:
     DBManager *database;
     bool ok;
     QString base;
+    QString filename;
+    QThread* thread;
+    QList<qint64> commentTable;
 };
 #endif // MAINWINDOW_H

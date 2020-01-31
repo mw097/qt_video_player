@@ -14,12 +14,16 @@ public:
     DBManager(const QString& path);
     bool addMovie(const QString& title);
     bool addBookmark(const QString& name, double time, QString title);
-    bool addComment(const QString& name, double time, const QString& comment);
+    bool addComment(const QString& name, int time, const QString& comment);
     int getBookmarkTime(const QString& name);
     QStringList getBookmarks(const QString title);
     bool checkUniqueBookmark(const QString &bookmarkName, const QString &title);
+    int getCommentTime(const QString& name);
+    QString getCommentText(qint64& commentTime);
+    QList<qint64> getComments(const QString& name);
 private:
     bool checkUnique(const QString &title);
+
     QSqlDatabase db;
 };
 
