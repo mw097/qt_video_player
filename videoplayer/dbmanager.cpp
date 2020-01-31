@@ -94,13 +94,13 @@ int DBManager::getBookmarkTime(const QString &name)
     return time;
 }
 
-bool DBManager::addComment(const QString& hash, double time, const QString& comment)
+bool DBManager::addComment(const QString& name, int time, const QString& comment)
 {
     bool success = false;
     // you should check if args are ok first...
     QSqlQuery query;
-    query.prepare("INSERT INTO comments (hash, time, comment) VALUES (:hash, :time, :comment)");
-    query.bindValue(":hash", hash);
+    query.prepare("INSERT INTO comments (name, time, comment) VALUES (:name, :time, :comment)");
+    query.bindValue(":name", name);
     query.bindValue(":time", time);
     query.bindValue(":comment", comment);
     if(query.exec())
@@ -116,6 +116,7 @@ bool DBManager::addComment(const QString& hash, double time, const QString& comm
     return success;
 }
 
+<<<<<<< HEAD
 QStringList DBManager::getBookmarks(const QString title)
 {
     QSqlQuery query;
@@ -184,4 +185,70 @@ bool DBManager::checkUniqueBookmark(const QString &bookmarkName, const QString &
     }
     return false;
 }
+=======
+int DBManager::getCommentTime(const QString& name)
+{
+    QSqlQuery query;
+    int time = 0;
+    query.prepare("SELECT time FROM comments WHERE name='"+name+"'");
+    if(query.exec())
+    {
+        qDebug() << "getCommentTime success";
+    }
+    else
+    {
+         qDebug() << "getCommentTime error:" << query.lastError();
+    }
+    while (query.next())
+    {
+            time = query.value(0).toInt();
+    }
+    return time;
+}
+
+QString DBManager::getCommentText(qint64& commentTime)
+{
+    QSqlQuery query;
+    QString comment;
+    QString sA = QString::number(commentTime);
+    query.bindValue(":time", commentTime);
+    query.prepare("SELECT comment FROM comments WHERE time = '"+sA+"'");
+    if(query.exec())
+    {
+        qDebug() << "getComment success";
+    }
+    else
+    {
+         qDebug() << "getComment error:" << query.lastError();
+    }
+    while (query.next())
+    {
+            comment = query.value(0).toString();
+    }
+    return comment;
+}
+
+QList<qint64> DBManager::getComments(const QString& name)
+{
+    QSqlQuery query;
+    QList<qint64> table;
+
+    query.prepare("SELECT time FROM comments WHERE name='"+name+"'");
+    if(query.exec())
+     {
+        qDebug() << "getComments success";
+     }
+     else
+     {
+        qDebug() << "getComments error:" << query.lastError();
+     }
+     while (query.next())
+     {
+         table << query.value(0).toInt();
+         qDebug()<< query.value(0).toInt();
+     }
+    return table;
+}
+
+>>>>>>> comments
 

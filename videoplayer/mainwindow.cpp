@@ -7,6 +7,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    thread = new QThread(this);
+
     // Setting QMediaPlayer and QVideoWidget
     player = new QMediaPlayer(this);
     canvas = new QVideoWidget(this);
@@ -35,6 +37,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(player, &QMediaPlayer::durationChanged, time_slider, &QSlider::setMaximum);
     connect(player, &QMediaPlayer::positionChanged, time_slider, &QSlider::setValue);
     connect(time_slider, &QSlider::sliderMoved, player, &QMediaPlayer::setPosition);
+    connect(time_slider, &QSlider::sliderMoved, player, &QMediaPlayer::positionChanged);
 
     //Space Between Sliders
     space2 = new QLabel(this);
@@ -86,6 +89,52 @@ MainWindow::MainWindow(QWidget *parent)
     //Add database
     database = new DBManager("..\\maindb.db");
 
+    //connect(player, SIGNAL(&QMediaPlayer::positionChanged()), this, SLOT(LookForComments()));
+
+//    if(&QMediaPlayer::positionChanged)
+//    {
+//        emit(onPositionChange());
+//    }
+
+//    connect(player,SIGNAL(onPositionChange()), this , SLOT(LookForComments()));
+     connect(player, SIGNAL(positionChanged(qint64)), this, SLOT(playerOnPositionChanged(qint64)));
+
+}
+
+void MainWindow::playerOnPositionChanged(qint64 position) {
+
+    //QList<int>::iterator i = commentTable.begin();
+    for(qint64 i : commentTable)
+    {
+        qDebug() << "1" << position << i;
+        if(position> i-1000 & position<i+1000)
+        {
+            qDebug() << "2";
+            //browser->setText(database->getCommentText(*i));
+            browser->setText(database->getCommentText(i));
+            qDebug() << database->getCommentText(i);
+        }
+    }
+
+    qDebug() << time;
+}
+
+void MainWindow::LookForComments()
+{
+          qDebug() << "LOOK FOR COMMENTS";
+          QFileInfo fi(filename);
+          QString base = fi.baseName();
+          qint64 currentPosition = player->position();
+          QList<qint64>::iterator i = commentTable.begin();
+          while( i != commentTable.end())
+          {
+              if(currentPosition == *i)
+              {
+                  qDebug() << "i finded position" ;
+                  browser->setText(database->getCommentText(*i));
+              }
+          }
+
 }
 
 MainWindow::~MainWindow()
@@ -93,14 +142,27 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
+
+
 void MainWindow::on_actionOpen_triggered()
 {
-    QString filename = QFileDialog::getOpenFileName(this, "Open a file","","Video Files (*.avi *.mpg *.mp4)");
+    filename = QFileDialog::getOpenFileName(this, "Open a file","","Video Files (*.avi *.mpg *.mp4)");
 
     QFileInfo fi(filename);
     base = fi.baseName();
     on_actionStop_triggered();
     player->setMedia(QUrl::fromLocalFile(filename));
+<<<<<<< HEAD
+=======
+    commentTable = database->getComments(base);
+    QList<qint64>::iterator i = commentTable.begin();
+    while( i != commentTable.end())
+    {
+        qDebug() << *i ;
+        ++i;
+    }
+>>>>>>> comments
 
     database->addMovie(base);
 
@@ -110,6 +172,9 @@ void MainWindow::on_actionOpen_triggered()
     bookmarks->addItems(bookmarkList);
 
     browser->setText("Open Button");
+
+    //LookForComments();
+
 }
 
 void MainWindow::on_actionPlay_triggered()
@@ -134,6 +199,10 @@ void MainWindow::on_comment_btn_triggered()
 {
     qint64 commentTime = player->position();
     QString commentText = comment->text();
+    QFileInfo fi(filename);
+    QString base = fi.baseName();
+
+    database->addComment(base,commentTime,commentText);
 
     qDebug() << "time: " << commentTime << "text: " << commentText;
 }

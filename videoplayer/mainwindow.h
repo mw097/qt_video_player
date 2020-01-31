@@ -12,6 +12,7 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QDebug>
+#include <QTime>
 
 #include "dbmanager.h"
 
@@ -25,6 +26,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    QMediaPlayer* player;
 
 private slots:
     void on_actionOpen_triggered();
@@ -39,11 +41,24 @@ private slots:
 
     void on_comment_btn_triggered();
 
+<<<<<<< HEAD
     void on_bookmarkIndex_triggered();
 
 private:
     Ui::MainWindow *ui;
     QMediaPlayer* player;
+=======
+    void LookForComments();
+    void playerOnPositionChanged(qint64 position);
+
+
+signals:
+
+private:
+    Ui::MainWindow *ui;
+    /*Handles decompresing and decoding a file*/
+
+>>>>>>> comments
     /*Medium through which the video will be displayed upon*/
     QVideoWidget* canvas;
     QSlider* time_slider;
@@ -59,6 +74,12 @@ private:
     QPushButton* comment_btn;
     DBManager *database;
     bool ok;
+<<<<<<< HEAD
     QString base;
+=======
+    QString filename;
+    QThread* thread;
+    QList<qint64> commentTable;
+>>>>>>> comments
 };
 #endif // MAINWINDOW_H
