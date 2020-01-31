@@ -8,6 +8,7 @@
 #include <QDebug>
 #include <QThread>
 #include <QList>
+#include <QMessageBox>
 using namespace std;
 
 class DBManager
@@ -15,11 +16,13 @@ class DBManager
 public:
     DBManager(const QString& path);
     bool addMovie(const QString& title);
-    bool addBookmark(const QString& name, double time);
+    bool addBookmark(const QString& name, double time, QString title);
     bool addComment(const QString& name, int time, const QString& comment);
     bool getMovies();
-    QString getMovieHash(const QString& title);
-    double getBookmarkTime(const QString& name);
+    QString getMovieHash(const QString& title);    
+    int getBookmarkTime(const QString &name);
+    QStringList getBookmarks(const QString title);
+    bool checkUniqueBookmark(const QString &bookmarkName, const QString &title);
 
     int getCommentTime(const QString& name);
     QString getCommentText(qint64& commentTime);
@@ -27,6 +30,7 @@ public:
 
 private:
     QSqlDatabase db;
+    bool checkUnique(const QString &title);
 };
 
 #endif // DBMANAGER_H

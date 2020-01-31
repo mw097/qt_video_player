@@ -41,6 +41,8 @@ private slots:
 
     void on_comment_btn_triggered();
 
+    void on_bookmarkIndex_triggered();
+
     void LookForComments();
     void playerOnPositionChanged(qint64 position);
 
@@ -67,6 +69,7 @@ private:
     DBManager *database;
     bool ok;
     QString filename;
+    QString base;
     QThread* thread;
     QList<qint64> commentTable;
 };
