@@ -201,7 +201,7 @@ void MainWindow::on_comment_btn_triggered()
     QString base = fi.baseName();
 
     database->addComment(base,commentTime,commentText);
-
+    browser->setText(commentText);
     qDebug() << "time: " << commentTime << "text: " << commentText;
 }
 
